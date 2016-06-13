@@ -111,7 +111,7 @@ app.post('/item', function (req, res) {
 });
 
 // gets all the consignors from the database
-app.get('consignor', function (req, res) {
+app.get('/consignor', function (req, res) {
 	Consignor.findAll().then(function (consignors) {
 		consignors = consignors.map(function (consignorRow) {
 			var columns = consignorRow.dataValues;
