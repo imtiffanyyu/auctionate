@@ -43,37 +43,39 @@ html(lang='en')
 	ul(class="collapsible popout" data-collapsible="accordion")
 		li
 			div(class="collapsible-header active") Personal Information
-			div(class="collapsible-body")
+			div(class="collapsible-body blue-grey darken-1")
 
 				.row
 					form(class='col s12' style="margin:10px")
 						.row
-							input-field(class='col s3')
+							input-field(class='col s2')
 								label(for="firstname") First Name
 								input(placeholder="First Name" id="firstname" type="text" class="validate")
 
-						.row    
-							input-field(class='col s3')
-								label(for="firstname") Last Name
+							input-field(class='col s4')
+								label(for="lastname") Last Name
 								input(placeholder="Last Name" id="lastname" type="text" class="validate")
+
+						.row    
+							input-field(class='col s6')
+								label(for="address") Address
+								input(placeholder="Address" id="address" type="text" class="validate")
+
+						.row
+							input-field(class='col s1')
+								label(for="zipcode") Zipcode
+								input(placeholder="Zipcode" id="zipcode" type="text" class="validate")
+
+							input-field(class='col s2')
+								label(for="firstname") City
+								input(placeholder="City" id="lastname" type="text" class="validate")
+
+							input-field(class='col s3')
+								label(for="country") Country
+								input(placeholder="Country" id="country" type="text" class="validate")
 
 		li
 			div(class="collapsible-header") Second
-			div(class="collapsible-body")
-				.row
-					form(class='col s12' style="margin:10px")
-						.row
-							input-field(class='col s3 card blue-grey darken-1')
-								label(for="firstname") First Name
-								input(placeholder="First Name" id="firstname" type="text" class="validate")
-
-						.row    
-							input-field(class='col s3 card blue-grey darken-1')
-								label(for="firstname") Last Name
-								input(placeholder="Last Name" id="lastname" type="text" class="validate")
-
-		li
-			div(class="collapsible-header") Third
 			div(class="collapsible-body")
 				.row
 					form(class='col s12' style="margin:10px")

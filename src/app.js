@@ -134,9 +134,9 @@ app.get('/consignor', function (req, res) {
 	});
 });
 
-// add new consignor 
+// add new consignor
 app.post('/consignor', function (req, res) {
-	Consignor.create({	
+	Consignor.create({
 		lastname: req.body.lastname,
 		address: req.body.address,
 		zipcode: req.body.zipcode,
