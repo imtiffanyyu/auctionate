@@ -59,6 +59,7 @@ Item.belongsTo(Consignor);
 
 var app = express();
 
+app.use(express.static('./src/'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
