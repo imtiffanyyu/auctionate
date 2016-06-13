@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 // connect to the database
-var sequelize = new Sequelize('auctionate', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
+var sequelize = new Sequelize('auctionate', 'postgres', 'postgres', {
 	host: 'localhost',
 	dialect: 'postgres',
 	define: {
@@ -59,9 +59,10 @@ Item.belongsTo(Consignor);
 
 var app = express();
 
-app.use(bodyParser.urlencoded({extended: true})); 
+app.use(express.static('./src/'));
+app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(session({ 
+app.use(session({
 	secret: 'oh wow very secret much security',
 	resave: true,
 	saveUninitialized: false
