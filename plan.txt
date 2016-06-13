@@ -1,7 +1,12 @@
 // PLAN
 1. Set up with tables.
 2. Three tables
-GUY TO ADD CONTENTS OF TABLES
+3. Jade files 
+-- Nav bar
+-- Index (home)
+-- Auction listings
+-- Cogsigners
+-- Bidders
 
 
 // GOOGLE DOC
