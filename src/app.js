@@ -28,7 +28,7 @@ var Item = sequelize.define('item', {
 var Consignor = sequelize.define('consignor', {
 	lastname: Sequelize.STRING,
 	address: Sequelize.STRING,
-	zipcode: Sequelize.INTEGER,
+	zipcode: Sequelize.STRING,
 	city: Sequelize.STRING,
 	phone: Sequelize.STRING,
 	email: Sequelize.STRING,
@@ -44,7 +44,7 @@ var Bidder = sequelize.define('bidder', {
 	phone: Sequelize.STRING,
 	email: Sequelize.STRING,
 	address: Sequelize.STRING,
-	zipcode: Sequelize.INTEGER,
+	zipcode: Sequelize.STRING,
 	city: Sequelize.STRING,
 	payment: Sequelize.TEXT,
 	shipping: Sequelize.TEXT
@@ -112,7 +112,7 @@ app.post('/item', function (req, res) {
 });
 
 // gets all the consignors from the database
-app.get('consignor', function (req, res) {
+app.get('/consignor', function (req, res) {
 	Consignor.findAll().then(function (consignors) {
 		consignors = consignors.map(function (consignorRow) {
 			var columns = consignorRow.dataValues;
