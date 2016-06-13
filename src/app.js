@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 // connect to the database
-var sequelize = new Sequelize('auctionate', 'postgres', 'postgres', {
+var sequelize = new Sequelize('auctionate', 'postgres', 12345, {
 	host: 'localhost',
 	dialect: 'postgres',
 	define: {
