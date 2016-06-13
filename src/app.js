@@ -76,19 +76,98 @@ app.get('/', function (req, res) {
 	res.render('index');
 });
 
-// form to add new item
+// gets all the itmes in the database
 app.get('/item', function (req, res) {
-	res.render('item');
+	Item.findAll().then(function (items) {
+		items = items.map(function (itemRow) {
+			var columns = itemRow.dataValues;
+			return {
+				lotnumber: columns.lotnumber,
+				name: columns.name,
+				category: columns.category,
+				description: columns.description,
+				estimate: columns.estimate,
+				reserve: columns.reserve,
+				premium: columns.premium
+			}
+		});
+		res.render('item', {
+			items: items
+		});
+	});
 });
 
-// form to add new consignor
-app.get('/consignor', function (req, res) {
-	res.render('consignor');
+app.post('/item', function (req, res) {
+	Item.create({
+		lotnumber: req.body.lotnumber,
+		name: req.body.name,
+		category: req.body.catergory,
+		description: req.body.description,
+		estimate: req.body.estimate,
+		reserve: req.body.reserve,
+		premium: req.body.premium
+	});
+	res.redirect('back') // back says" stay on this page
 });
+
+// gets all the consignors from the database
+app.get('consignor', function (req, res) {
+	Consignor.findAll().then(function (consignors) {
+		consignors = consignors.map(function (consignorRow) {
+			var columns = consignorRow.dataValues;
+			return {
+				lastname: columns.lastname,
+				address: columns.address,
+				zipcode: columns.zipcode,
+				city: columns.city,
+				phone: columns.phone,
+				email: columns.email,
+				bankaccount: columns.bankaccount,
+				commission: columns.commission,
+				fee: columns.fee
+			}
+		});
+		res.render('consignor', {
+			consignors: consignors
+		});
+	});
+});
+
+// add new consignor 
+app.post('/consignor', function (req, res) {
+	Consignor.create({	
+		lastname: req.body.lastname,
+		address: req.body.address,
+		zipcode: req.body.zipcode,
+		city: req.body.city,
+		phone: req.body.phone,
+		email: req.body.email,
+		bankaccount: req.body.bankaccount,
+		commission: req.body.commission,
+		fee: req.body.fee
+	});
+	res.redirect('back') // back says: stay on this page
+});
+
 
 // form to add new bidder
 app.get('/bidder', function (req, res) {
 	res.render('bidder');
+});
+
+app.post('/bidder', function (req, res) {
+	Bidder.create({
+		firstname: req.body.firstname,
+		lastname: req.body.lastname,
+		phone: req.body.phone,
+		email: req.body.email,
+		address: req.body.address,
+		zipcode: req.body.zipcode,
+		city: req.body.city,
+		payment: req.body.payment,
+		shipping: req.body.shipping
+	});
+	res.redirect('back') // back says: stay on this page
 });
 
 sequelize.sync().then(function () {
