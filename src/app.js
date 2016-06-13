@@ -112,7 +112,7 @@ app.post('/item', function (req, res) {
 });
 
 // gets all the consignors from the database
-app.get('consignor', function (req, res) {
+app.get('/consignor', function (req, res) {
 	Consignor.findAll().then(function (consignors) {
 		consignors = consignors.map(function (consignorRow) {
 			var columns = consignorRow.dataValues;
@@ -134,9 +134,9 @@ app.get('consignor', function (req, res) {
 	});
 });
 
-// add new consignor 
+// add new consignor
 app.post('/consignor', function (req, res) {
-	Consignor.create({	
+	Consignor.create({
 		lastname: req.body.lastname,
 		address: req.body.address,
 		zipcode: req.body.zipcode,
