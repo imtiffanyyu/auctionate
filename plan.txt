@@ -1,5 +1,8 @@
 // PLAN
-Set up with tables.
+1. Set up with tables.
+2. Three tables
+GUY TO ADD CONTENTS OF TABLES
+
 
 // GOOGLE DOC
 Note: I have left the formatting to you.
