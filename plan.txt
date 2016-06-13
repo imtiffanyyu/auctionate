@@ -17,7 +17,7 @@ In a block, answer the following questions:
 
 In another block, answer the following:
 - What is your business model? Where is your revenue coming from? The auction houses would pay to have access to the system.
-- What are the costs of your business? Server management of the database.
+- What are the costs of your business? Server management of the database, storage of the images.
 
 Market research:
 - Who is your current competition? Internal systems that are used.
