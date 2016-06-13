@@ -12,9 +12,86 @@ var sequelize = new Sequelize('auctionate', process.env.POSTGRES_USER, process.e
 	}
 });
 
-//create table called items
+// create table called items
 var Item = sequelize.define('item', {
+	lotnumber: Sequelize.INTEGER,
 	name: Sequelize.STRING,
 	category: Sequelize.STRING,
-	description: Sequelize.TEXT
+	description: Sequelize.TEXT,
+	estimate: Sequelize.INTEGER,
+	reserve: Sequelize.INTEGER,
+	premium: Sequelize.INTEGER
+});
+
+// create table called consignors
+var Consignor = sequelize.define('consignor', {
+	lastname: Sequelize.STRING,
+	address: Sequelize.STRING,
+	zipcode: Sequelize.INTEGER,
+	city: Sequelize.STRING,
+	phone: Sequelize.STRING,
+	email: Sequelize.STRING,
+	bankaccount: Sequelize.INTEGER,
+	commission: Sequelize.INTEGER,
+	fee: Sequelize.INTEGER
+});
+
+// create table called bidders
+var Bidder = sequelize.define('bidder', {
+	firstname: Sequelize.STRING,
+	lastname: Sequelize.STRING,
+	phone: Sequelize.STRING,
+	email: Sequelize.STRING,
+	address: Sequelize.STRING,
+	zipcode: Sequelize.INTEGER,
+	city: Sequelize.STRING,
+	payment: Sequelize.TEXT,
+	shipping: Sequelize.TEXT
+});
+
+// assigns consignors to items
+Consignor.hasMany(Item);
+Item.belongsTo(Consignor);
+
+// assigns items to bidder -- FIX THIS
+// Bidder.hasMany(Item);
+// Item.belongsTo(Bidder);
+
+var app = express();
+
+app.use(bodyParser.urlencoded({extended: true})); 
+
+app.use(session({ 
+	secret: 'oh wow very secret much security',
+	resave: true,
+	saveUninitialized: false
+}));
+
+app.set('views', './src/views');
+app.set('view engine', 'jade');
+
+// HOME VIEW
+app.get('/', function (req, res) {
+	res.render('index');
+});
+
+// form to add new item
+app.get('/item', function (req, res) {
+	res.render('item');
+});
+
+// form to add new consignor
+app.get('/consignor', function (req, res) {
+	res.render('consignor');
+});
+
+// form to add new bidder
+app.get('/bidder', function (req, res) {
+	res.render('bidder');
+});
+
+sequelize.sync().then(function () {
+	var server = app.listen(3000, function () {
+		console.log('Auctionate app listening on port: ' + server.address().port);
+	});
 });
