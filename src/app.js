@@ -2,9 +2,10 @@ var Sequelize = require('sequelize');
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+//var jquery = require('jquery');
 
 // connect to the database
-var sequelize = new Sequelize('auctionate', 'postgres', 12345, {
+var sequelize = new Sequelize('auctionate', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
 	host: 'localhost',
 	dialect: 'postgres',
 	define: {
