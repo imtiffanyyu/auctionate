@@ -28,7 +28,7 @@ var Item = sequelize.define('item', {
 var Consignor = sequelize.define('consignor', {
 	lastname: Sequelize.STRING,
 	address: Sequelize.STRING,
-	zipcode: Sequelize.INTEGER,
+	zipcode: Sequelize.STRING,
 	city: Sequelize.STRING,
 	phone: Sequelize.STRING,
 	email: Sequelize.STRING,
@@ -44,7 +44,7 @@ var Bidder = sequelize.define('bidder', {
 	phone: Sequelize.STRING,
 	email: Sequelize.STRING,
 	address: Sequelize.STRING,
-	zipcode: Sequelize.INTEGER,
+	zipcode: Sequelize.STRING,
 	city: Sequelize.STRING,
 	payment: Sequelize.TEXT,
 	shipping: Sequelize.TEXT

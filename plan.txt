@@ -8,6 +8,18 @@
 -- Cogsigners
 -- Bidders
 
+MONDAY, JUNE 13
+- created project drives
+- created template for nav bar
+- added in app.get for tables and app.post for forms
+- created consigner page
+
+Goals for tomorrow/this week
+- add in update and delete functionality
+- finish jade pages for bidders, consigners, and items
+- look into image upload
+- look into invoicing system
+
 
 // GOOGLE DOC
 Note: I have left the formatting to you.
