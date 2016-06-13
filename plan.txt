@@ -11,16 +11,16 @@ State the purpose of your application clearly and concisely. Try to do it in a s
 Have an easy way to create and maintain auctions and keep a clear overview.
 
 In a block, answer the following questions:
-- What is the problem you are trying to solve?
+- What is the problem you are trying to solve? Auction houses currently use a more manual process for maintaining auctions. It seems more complicated than it is. This will allow them to manage their inventory in a better way.
 - Who is your target audience? Auction houses
-- What are your specific goals?
+- What are your specific goals? Create a database management system that will allow auction houses to see their inventory, the consigners, and the winning bidders.
 
 In another block, answer the following:
-- What is your business model? Where is your revenue coming from?
-- What are the costs of your business?
+- What is your business model? Where is your revenue coming from? The auction houses would pay to have access to the system.
+- What are the costs of your business? Server management of the database.
 
 Market research:
-- Who is your current competition?
+- Who is your current competition? Internal systems that are used.
 - How is your product different from currently available competitors?
 - What is the current supply / demand for your product?
 
@@ -37,7 +37,7 @@ Have a timeline of milestones to reach, including deadlines:
 
 
 Things we need for the app
-Create user (employees)
+Add items
 Upload images
 Name images (or rename them)
 Information needed
