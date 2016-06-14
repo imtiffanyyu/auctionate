@@ -46,45 +46,62 @@ html(lang='en')
 			div(class="collapsible-body blue-grey darken-1")
 
 				.row
-					form(class='col s12' style="margin:10px")
+					form(action='/consignor' method='post' class='col s12' style="margin:10px")
 						.row
 							input-field(class='col s2')
 								label(for="firstname") First Name
-								input(placeholder="First Name" id="firstname" type="text" class="validate")
+								input(placeholder="First Name" name="firstname" type="text" class="validate")
 
 							input-field(class='col s4')
 								label(for="lastname") Last Name
-								input(placeholder="Last Name" id="lastname" type="text" class="validate")
+								input(placeholder="Last Name" name="lastname" type="text" class="validate")
 
 						.row    
 							input-field(class='col s6')
 								label(for="address") Address
-								input(placeholder="Address" id="address" type="text" class="validate")
+								input(placeholder="Address" name="address" type="text" class="validate")
 
 						.row
 							input-field(class='col s1')
 								label(for="zipcode") Zipcode
-								input(placeholder="Zipcode" id="zipcode" type="text" class="validate")
+								input(placeholder="Zipcode" name="zipcode" type="text" class="validate")
 
 							input-field(class='col s2')
-								label(for="firstname") City
-								input(placeholder="City" id="lastname" type="text" class="validate")
+								label(for="city") City
+								input(placeholder="City" name="city" type="text" class="validate")
 
 							input-field(class='col s3')
 								label(for="country") Country
-								input(placeholder="Country" id="country" type="text" class="validate")
+								input(placeholder="Country" name="country" type="text" class="validate")
+						.row
+							input-field(class='col s2')
+								label(for="phone") Phone
+								input(placeholder="Phone Number" name="phone" type="text" class="validate")
 
-		li
-			div(class="collapsible-header") Second
-			div(class="collapsible-body")
-				.row
-					form(class='col s12' style="margin:10px")
+							input-field(class='col s4')
+								label(for="email") Email
+								input(placeholder="Email" name="email" type="text" class="validate")
+
+
 						.row
 							input-field(class='col s3 card blue-grey darken-1')
-								label(for="firstname") First Name
-								input(placeholder="First Name" id="firstname" type="text" class="validate")
+								label(for="bankaccount") Bank Account
+								input(placeholder="Bank Account" name="bankaccount" type="text" class="validate")
 
 						.row    
 							input-field(class='col s3 card blue-grey darken-1')
-								label(for="firstname") Last Name
-								input(placeholder="Last Name" id="lastname" type="text" class="validate")
+								label(for="commission") Commission
+								input(placeholder="Commission" name="commission" type="text" class="validate" DisplayFormatString="0 %")
+						.row    
+							input-field(class='col s3 card blue-grey darken-1')
+								label(for="fee") Fee
+								input(placeholder="Fee" name="fee" type="text" class="validate" DisplayFormatString="0 %")
+						.row
+							input(type="submit", value="add")
+
+		//- li
+		//- 	div(class="collapsible-header") Business Information
+		//- 	div(class="collapsible-body")
+		//- 		.row
+		//- 			form(class='col s12' style="margin:10px")
+
