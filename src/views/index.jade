@@ -6,41 +6,12 @@ html(lang='en')
 		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
 		link(rel="stylesheet" href="/css/style.css")
 		meta(name='viewport', content='width=device-width, initial-scale=1')
+		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
+		script(src="/js/custom.js")
 
 	body
-		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-			script.
-				$(document).ready(function () {
-					$(".dropdown-button").dropdown({ beloworigin: true });
-				})
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
-
-		ul#dropdown1(class="dropdown-content")
-			li
-				a(href="#!") one
-			li
-				a(href="#!") two
-			li.divider
-			li
-				a(href="#!") add new
-		.navbar-fixed
-			nav
-				.nav-wrapper
-					a.brand-logo(href='/' style='margin-left:20px') Auction House
-					a(href="#" data-activates="mobile-demo" class="button-collapse")
-						i.material-icons menu
-						ul.right(id="nav-mobile" class="hide-on-med-and-down")
-							li.active
-								a(href="/") Dashboard
-							li
-								a(href="/item") Items
-							li
-								a(href="/consignor") Consignors
-							li
-								a(href="/bidder") Bidders
-							li
-								a.dropdown-button(href="#!" data-activates="dropdown1" data-beloworigin="true") Auctions
-									i(class="material-icons right") arrow_drop_down
+		include ./navbar.jade
 									
 		.row
 			div(class="col s6 blue-grey darken-1" style="height:100vh")
@@ -49,4 +20,4 @@ html(lang='en')
 			
 			div(class="col s3 blue-grey darken-3" style="height:50vh")
 			
-			div(class="col s3 blue-grey darken-3" style="height:50vh")
+			div(class="col s3 blue-grey darken-4" style="height:50vh")
