@@ -40,7 +40,7 @@ body
 								i(class="material-icons right") arrow_drop_down
 
 	.row
-		
+
 		div(class="blue-grey darken-3 col s6" style="height:100vh")
 			table(class="bordered white")
 				tr
@@ -55,42 +55,11 @@ body
 
 		div(class="blue-grey darken-1 col s6" style="height:100vh")
 
-			form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
-				.row(class="col s12")
-					input-field(class='col s4')
-						label(for="lotnumber") Lotnumber
-						input(placeholder="Lotnumber" name="lotnumber" type="text" class="validate")
-
-					input-field(class='col s8')
-						label(for="itemname") Item Name
-						input(placeholder="Item Name" name="name" type="text" class="validate")
-
-				.row    
-					input-field(class='col s3')
-						label(for="catergory") Catergory
-						input(placeholder="Catergory" name="catergory" type="text" class="validate")
-
-				
-					input-field(class='col s9')
-						label(for="description") Description
-						input(placeholder="Description" name="description" type="text" class="validate")
-				.row
-					input-field(class='col s4')
-						label(for="estimate") Estimate
-						input(placeholder="Estimate" name="estimate" type="text" class="validate")
-
-					input-field(class='col s6')
-						label(for="reserve") Reserve
-						input(placeholder="Reserve" name="reserve" type="text" class="validate")
-				
-					input-field(class='col s4')
-						label(for="premium") Premium
-						input(placeholder="Premium" name="premium" type="text" class="validate")
-
-					input-field(class='col s4')
-						label(for="consignorid") ConsignorId
-						input(placeholder="ConsignorId" name="consignorId" type="text" class="validate")
-
+			ul(class="collapsible" data-collapsible="accordion")
+				li
+					div(class="collapsible-header") Add new lot
+					div(class="collapsible-body")
+						include ./forms/lotform.jade
 
 				//- .row
 				//- 	input-field(class='col s6 blue-grey darken-1')
@@ -105,5 +74,3 @@ body
 				//- 		input-field
 				//- 			label(for="fee") Fee
 				//- 			input(placeholder="Fee" name="fee" type="text" class="validate")
-				.row
-					button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add

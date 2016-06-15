@@ -174,7 +174,7 @@ app.get('/bidder', function (req, res) {
 				zipcode: columns.zipcode,
 				city: columns.city,
 				payment: columns.payment,
-				shipping: columns.shipping			
+				shipping: columns.shipping
 			}
 		});
 		res.render('bidder', {
