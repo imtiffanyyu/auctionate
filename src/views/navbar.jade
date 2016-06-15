@@ -1,0 +1,26 @@
+ul#dropdown1(class="dropdown-content")
+    li
+        a(href="#!") one
+    li
+        a(href="#!") two
+    li.divider
+    li
+        a(href="#!") add new
+.navbar-fixed
+    nav(class="blue-grey darken-4")
+        .nav-wrapper
+            a.brand-logo(href='/' style='margin-left:20px') Auctionhouse
+            a(href="#" data-activates="mobile-demo" class="button-collapse")
+                i.material-icons menu
+                ul.right(id="nav-mobile" class="hide-on-med-and-down")
+                    li
+                        a(href="/") Dashboard
+                    li
+                        a(href="/item") Lots
+                    li
+                        a(href="/consignor") Consignors
+                    li
+                        a(href="/bidder") Bidders
+                    li
+                        a.dropdown-button(href="#!" data-activates="dropdown1" data-beloworigin="true") Auctions
+                            i(class="material-icons right") arrow_drop_down
