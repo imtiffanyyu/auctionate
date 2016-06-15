@@ -1,0 +1,109 @@
+doctype html
+html(lang='en')
+head
+	title Auction House Items
+	link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
+	link(rel="stylesheet" href="/css/style.css")
+	meta(name='viewport', content='width=device-width, initial-scale=1')
+	script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
+	script(src="/js/custom.js")
+
+body
+
+	ul#dropdown1(class="dropdown-content")
+		li
+			a(href="#!") one
+		li
+			a(href="#!") two
+		li.divider
+		li
+			a(href="#!") add new
+	.navbar-fixed
+		nav
+			.nav-wrapper
+				a.brand-logo(href='/' style='margin-left:20px') Auction House
+				a(href="#" data-activates="mobile-demo" class="button-collapse")
+					i.material-icons menu
+					ul.right(id="nav-mobile" class="hide-on-med-and-down")
+						li
+							a(href="/") Dashboard
+						li.active
+							a(href="/item") Items
+						li
+							a(href="/consignor") Consigners
+						li
+							a(href="/") Bidders
+						li
+							a.dropdown-button(href="#!" data-activates="dropdown1" data-beloworigin="true") Auctions
+								i(class="material-icons right") arrow_drop_down
+
+	.row
+		
+		div(class="blue-grey darken-3 col s6" style="height:100vh")
+			table(class="bordered white")
+				tr
+					th Lotnumber
+					th Item Name
+					th Description
+				each item in items
+					tr
+						td=item.lotnumber
+						td=item.name
+						td=item.description
+
+		div(class="blue-grey darken-1 col s6" style="height:100vh")
+
+			form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
+				.row(class="col s12")
+					input-field(class='col s4')
+						label(for="lotnumber") Lotnumber
+						input(placeholder="Lotnumber" name="lotnumber" type="text" class="validate")
+
+					input-field(class='col s8')
+						label(for="itemname") Item Name
+						input(placeholder="Item Name" name="name" type="text" class="validate")
+
+				.row    
+					input-field(class='col s3')
+						label(for="catergory") Catergory
+						input(placeholder="Catergory" name="catergory" type="text" class="validate")
+
+				
+					input-field(class='col s9')
+						label(for="description") Description
+						input(placeholder="Description" name="description" type="text" class="validate")
+				.row
+					input-field(class='col s4')
+						label(for="estimate") Estimate
+						input(placeholder="Estimate" name="estimate" type="text" class="validate")
+
+					input-field(class='col s6')
+						label(for="reserve") Reserve
+						input(placeholder="Reserve" name="reserve" type="text" class="validate")
+				
+					input-field(class='col s4')
+						label(for="premium") Premium
+						input(placeholder="Premium" name="premium" type="text" class="validate")
+
+					input-field(class='col s4')
+						label(for="consignorid") ConsignorId
+						input(placeholder="ConsignorId" name="consignorId" type="text" class="validate")
+
+
+				//- .row
+				//- 	input-field(class='col s6 blue-grey darken-1')
+				//- 		label(for="bankaccount") Bank Account
+				//- 		input(placeholder="Bank Account" name="bankaccount" type="text" class="validate")
+
+				//- 	div(class="col s3")
+				//- 		label(for="commission") Commision
+				//- 		input(value="10%" id="commission" name="group1" type="text" class="validate")
+
+				//- 	div(class="col s3")
+				//- 		input-field
+				//- 			label(for="fee") Fee
+				//- 			input(placeholder="Fee" name="fee" type="text" class="validate")
+				.row
+					button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add
