@@ -26,10 +26,12 @@ var Item = sequelize.define('item', {
 
 // create table called consignors
 var Consignor = sequelize.define('consignor', {
+	firstname: Sequelize.STRING,
 	lastname: Sequelize.STRING,
 	address: Sequelize.STRING,
-	zipcode: Sequelize.INTEGER,
+	zipcode: Sequelize.STRING,
 	city: Sequelize.STRING,
+	country: Sequelize.STRING,
 	phone: Sequelize.STRING,
 	email: Sequelize.STRING,
 	bankaccount: Sequelize.INTEGER,
@@ -44,7 +46,7 @@ var Bidder = sequelize.define('bidder', {
 	phone: Sequelize.STRING,
 	email: Sequelize.STRING,
 	address: Sequelize.STRING,
-	zipcode: Sequelize.INTEGER,
+	zipcode: Sequelize.STRING,
 	city: Sequelize.STRING,
 	payment: Sequelize.TEXT,
 	shipping: Sequelize.TEXT
@@ -117,10 +119,12 @@ app.get('/consignor', function (req, res) {
 		consignors = consignors.map(function (consignorRow) {
 			var columns = consignorRow.dataValues;
 			return {
+				firstname: columns.firstname,
 				lastname: columns.lastname,
 				address: columns.address,
 				zipcode: columns.zipcode,
 				city: columns.city,
+				country: columns.country,
 				phone: columns.phone,
 				email: columns.email,
 				bankaccount: columns.bankaccount,
@@ -134,20 +138,23 @@ app.get('/consignor', function (req, res) {
 	});
 });
 
-// add new consignor 
+// add new consignor
 app.post('/consignor', function (req, res) {
-	Consignor.create({	
+	Consignor.create({
+		firstname: req.body.firstname,
 		lastname: req.body.lastname,
 		address: req.body.address,
 		zipcode: req.body.zipcode,
 		city: req.body.city,
+		country: req.body.country,
 		phone: req.body.phone,
 		email: req.body.email,
 		bankaccount: req.body.bankaccount,
 		commission: req.body.commission,
 		fee: req.body.fee
-	});
+	}).then(function(){
 	res.redirect('back') // back says: stay on this page
+	})
 });
 
 
@@ -189,7 +196,7 @@ app.post('/bidder', function (req, res) {
 	res.redirect('back') // back says: stay on this page
 });
 
-sequelize.sync().then(function () {
+sequelize.sync({force: true}).then(function () {
 	var server = app.listen(3000, function () {
 		console.log('Auctionate app listening on port: ' + server.address().port);
 	});
