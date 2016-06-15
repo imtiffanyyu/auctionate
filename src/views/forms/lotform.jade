@@ -1,0 +1,38 @@
+form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
+    .row(class="col s12")
+        
+        input-field(class='col s2')
+            label(for="lotnumber") Lotnumber
+            input(placeholder="Lotnumber" name="lotnumber" type="text" class="validate")
+
+        input-field(class='col s6')
+            label(for="itemname") Item Name
+            input(placeholder="Item Name" name="name" type="text" class="validate")
+   
+        input-field(class='col s4')
+            label(for="catergory") Catergory
+            input(placeholder="Catergory" name="catergory" type="text" class="validate")
+
+    .row
+        input-field(class='col s12')
+            label(for="description") Description
+            input(placeholder="Description" name="description" type="text" class="validate")
+    .row
+        input-field(class='col s4')
+            label(for="estimate") Estimate
+            input(placeholder="Estimate" name="estimate" type="text" class="validate")
+
+        input-field(class='col s6')
+            label(for="reserve") Reserve
+            input(placeholder="Reserve" name="reserve" type="text" class="validate")
+    
+        input-field(class='col s4')
+            label(for="premium") Premium
+            input(placeholder="Premium" name="premium" type="text" class="validate")
+
+        input-field(class='col s4')
+            label(for="consignorid") Consignor#Id
+            input(placeholder="Consignor#Id" name="consignorId" type="text" class="validate")
+            
+    .row
+        button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add
