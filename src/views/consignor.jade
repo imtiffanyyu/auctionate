@@ -27,79 +27,83 @@ body
 				a(href="#" data-activates="mobile-demo" class="button-collapse")
 					i.material-icons menu
 					ul.right(id="nav-mobile" class="hide-on-med-and-down")
-						li.active
-							a(href="/") Home
+						li
+							a(href="/") Dashboard
 						li
 							a(href="/item") Items
-						li
+						li.active
 							a(href="/") Consigners
 						li
 							a(href="/") Bidders
 						li
 							a.dropdown-button(href="#!" data-activates="dropdown1" data-beloworigin="true") Auctions
 								i(class="material-icons right") arrow_drop_down
-	
-	.row							
-		div(class="blue-grey darken-1 col s6")
 
-				form(action='/consignor' method='post' class='col s12 white-text' style="margin:10px")
-					.row(class="col s12")
-						input-field(class='col s4')
-							label(for="firstname") First Name
-							input(placeholder="First Name" name="firstname" type="text" class="validate")
-
-						input-field(class='col s8')
-							label(for="lastname") Last Name
-							input(placeholder="Last Name" name="lastname" type="text" class="validate")
-
-					.row    
-						input-field(class='col s12')
-							label(for="address") Address
-							input(placeholder="Address" name="address" type="text" class="validate")
-
-					.row
-						input-field(class='col s2')
-							label(for="zipcode") Zipcode
-							input(placeholder="Zipcode" name="zipcode" type="text" class="validate")
-
-						input-field(class='col s4')
-							label(for="city") City
-							input(placeholder="City" name="city" type="text" class="validate")
-
-						input-field(class='col s6')
-							label(for="country") Country
-							input(placeholder="Country" name="country" type="text" class="validate")
-					.row
-						input-field(class='col s4')
-							label(for="phone") Phone
-							input(placeholder="Phone Number" name="phone" type="text" class="validate")
-
-						input-field(class='col s8')
-							label(for="email") Email
-							input(placeholder="Email" name="email" type="text" class="validate")
-
-
-					.row
-						input-field(class='col s6 blue-grey darken-1')
-							label(for="bankaccount") Bank Account
-							input(placeholder="Bank Account" name="bankaccount" type="text" class="validate")
-
-						div(class="col s3")
-							label(for="commission") Commision
-							input(value="10%" id="commission" name="group1" type="text" class="validate")
-
-						div(class="col s3")
-							input-field
-								label(for="fee") Fee
-								input(placeholder="Fee" name="fee" type="text" class="validate")
-					.row
-						button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add
-					
+	.row
 		
-		div(class="blue-grey darken-3 col s6")
+		div(class="blue-grey darken-3 col s6" style="height:100vh")
+			table(class="bordered white")
+				tr
+					th Firstname
+					th Lastname
+					th City
+				each consignor in consignors
+					tr
+						td=consignors.firstname
+						td=consignors.lastname
+						td=consignors.city
 
-	//- li
-	//- 	div(class="collapsible-header") Business Information
-	//- 	div(class="collapsible-body")
-	//- 		.row
-	//- 			form(class='col s12' style="margin:10px")
+		div(class="blue-grey darken-1 col s6" style="height:100vh")
+
+			form(action='/consignor' method='post' class='col s12 white-text' style="margin:10px")
+				.row(class="col s12")
+					input-field(class='col s4')
+						label(for="firstname") First Name
+						input(placeholder="First Name" name="firstname" type="text" class="validate")
+
+					input-field(class='col s8')
+						label(for="lastname") Last Name
+						input(placeholder="Last Name" name="lastname" type="text" class="validate")
+
+				.row    
+					input-field(class='col s12')
+						label(for="address") Address
+						input(placeholder="Address" name="address" type="text" class="validate")
+
+				.row
+					input-field(class='col s2')
+						label(for="zipcode") Zipcode
+						input(placeholder="Zipcode" name="zipcode" type="text" class="validate")
+
+					input-field(class='col s4')
+						label(for="city") City
+						input(placeholder="City" name="city" type="text" class="validate")
+
+					input-field(class='col s6')
+						label(for="country") Country
+						input(placeholder="Country" name="country" type="text" class="validate")
+				.row
+					input-field(class='col s4')
+						label(for="phone") Phone
+						input(placeholder="Phone Number" name="phone" type="text" class="validate")
+
+					input-field(class='col s8')
+						label(for="email") Email
+						input(placeholder="Email" name="email" type="text" class="validate")
+
+
+				.row
+					input-field(class='col s6 blue-grey darken-1')
+						label(for="bankaccount") Bank Account
+						input(placeholder="Bank Account" name="bankaccount" type="text" class="validate")
+
+					div(class="col s3")
+						label(for="commission") Commision
+						input(value="10%" id="commission" name="group1" type="text" class="validate")
+
+					div(class="col s3")
+						input-field
+							label(for="fee") Fee
+							input(placeholder="Fee" name="fee" type="text" class="validate")
+				.row
+					button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add
