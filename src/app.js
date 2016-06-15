@@ -108,7 +108,8 @@ app.post('/item', function (req, res) {
 		description: req.body.description,
 		estimate: req.body.estimate,
 		reserve: req.body.reserve,
-		premium: req.body.premium
+		premium: req.body.premium,
+		consignorId: req.body.consignorId
 	});
 	res.redirect('back') // back says" stay on this page
 });
@@ -158,9 +159,27 @@ app.post('/consignor', function (req, res) {
 });
 
 
-// form to add new bidder
+// get all bidders out of the database
 app.get('/bidder', function (req, res) {
-	res.render('bidder');
+	Bidder.findAll().then(function (bidders) {
+		bidders = bidders.map(function (bidderRow) {
+			var columns = bidderRow.dataValues;
+			return {
+				firstname: columns.firstname,
+				lastname: columns.lastname,
+				phone: columns.phone,
+				email: columns.email,
+				address: columns.address,
+				zipcode: columns.zipcode,
+				city: columns.city,
+				payment: columns.payment,
+				shipping: columns.shipping			
+			}
+		});
+		res.render('bidder', {
+			bidders: bidders
+		});
+	});
 });
 
 app.post('/bidder', function (req, res) {
@@ -178,7 +197,7 @@ app.post('/bidder', function (req, res) {
 	res.redirect('back') // back says: stay on this page
 });
 
-sequelize.sync({force: true}).then(function () {
+sequelize.sync().then(function () {
 	var server = app.listen(3000, function () {
 		console.log('Auctionate app listening on port: ' + server.address().port);
 	});
