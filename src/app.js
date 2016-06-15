@@ -46,6 +46,7 @@ var Bidder = sequelize.define('bidder', {
 	phone: Sequelize.STRING,
 	email: Sequelize.STRING,
 	address: Sequelize.STRING,
+	country: Sequelize.STRING,
 	zipcode: Sequelize.STRING,
 	city: Sequelize.STRING,
 	payment: Sequelize.TEXT,
@@ -57,8 +58,8 @@ Consignor.hasMany(Item);
 Item.belongsTo(Consignor);
 
 // assigns items to bidder
-Bidder.hasMany(Item);
-Item.belongsTo(Bidder);
+// Bidder.hasMany(Item);
+// Item.belongsTo(Bidder);
 
 var app = express();
 
