@@ -57,8 +57,8 @@ Consignor.hasMany(Item);
 Item.belongsTo(Consignor);
 
 // assigns items to bidder
-Bidder.hasMany(Item);
-Item.belongsTo(Bidder);
+// Bidder.hasMany(Item);
+// Item.belongsTo(Bidder);
 
 var app = express();
 
