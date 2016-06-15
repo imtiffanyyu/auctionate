@@ -108,7 +108,8 @@ app.post('/item', function (req, res) {
 		description: req.body.description,
 		estimate: req.body.estimate,
 		reserve: req.body.reserve,
-		premium: req.body.premium
+		premium: req.body.premium,
+		consignorId: req.body.consignorId
 	});
 	res.redirect('back') // back says" stay on this page
 });
@@ -196,7 +197,7 @@ app.post('/bidder', function (req, res) {
 	res.redirect('back') // back says: stay on this page
 });
 
-sequelize.sync({force: true}).then(function () {
+sequelize.sync().then(function () {
 	var server = app.listen(3000, function () {
 		console.log('Auctionate app listening on port: ' + server.address().port);
 	});
