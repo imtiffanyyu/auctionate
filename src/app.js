@@ -82,6 +82,7 @@ app.get('/', function (req, res) {
 	res.render('index');
 });
 
+
 // Invoice view for consignors
 app.get('/invoiceconsignor', function (req, res) {
 	res.render('invoiceconsignor');
@@ -92,7 +93,7 @@ app.get('/invoicebidder', function (req, res) {
 	res.render('invoicebidder');
 });
 
-// gets all the itmes in the database
+// gets all the items in the database
 app.get('/item', function (req, res) {
 	Item.findAll().then(function (items) {
 		items = items.map(function (itemRow) {
@@ -104,7 +105,8 @@ app.get('/item', function (req, res) {
 				description: columns.description,
 				estimate: columns.estimate,
 				reserve: columns.reserve,
-				premium: columns.premium
+				premium: columns.premium,
+				id: columns.consignorId
 			}
 		});
 		res.render('item', {
@@ -117,7 +119,7 @@ app.post('/item', function (req, res) {
 	Item.create({
 		lotnumber: req.body.lotnumber,
 		name: req.body.name,
-		category: req.body.catergory,
+		category: req.body.category,
 		description: req.body.description,
 		estimate: req.body.estimate,
 		reserve: req.body.reserve,
@@ -126,6 +128,33 @@ app.post('/item', function (req, res) {
 	});
 	res.redirect('back') // back says" stay on this page
 });
+
+// app.delete('/item', function (req, res) {
+// 	Item.remove({
+
+// 	})
+// })
+
+// update item in the database
+app.put('/item', function (req, res) {
+	Item.find({
+		where: {
+			id: request.body.updateid
+		}
+	}).then(function (item) {
+		item.update({
+			lotnumber: req.body.lotnumber,
+			name: req.body.name,
+			category: req.body.category,
+			description: req.body.description,
+			estimate: req.body.estimate,
+			reserve: req.body.reserve,
+			premium: req.body.premium,
+			consignorId: req.body.consignorId
+		});
+	});
+	res.redirect('back')
+})
 
 // gets all the consignors from the database
 app.get('/consignor', function (req, res) {
