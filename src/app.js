@@ -108,7 +108,7 @@ app.post('/item', function (req, res) {
 	Item.create({
 		lotnumber: req.body.lotnumber,
 		name: req.body.name,
-		category: req.body.catergory,
+		category: req.body.category,
 		description: req.body.description,
 		estimate: req.body.estimate,
 		reserve: req.body.reserve,
@@ -126,7 +126,7 @@ app.post('/item', function (req, res) {
 
 // update item in the database
 app.put('/item', function (req, res) {
-	Item.findOne({
+	Item.find({
 		where: {
 			id: request.body.updateid
 		}
@@ -134,7 +134,7 @@ app.put('/item', function (req, res) {
 		item.update({
 			lotnumber: req.body.lotnumber,
 			name: req.body.name,
-			category: req.body.catergory,
+			category: req.body.category,
 			description: req.body.description,
 			estimate: req.body.estimate,
 			reserve: req.body.reserve,
@@ -142,6 +142,7 @@ app.put('/item', function (req, res) {
 			consignorId: req.body.consignorId
 		});
 	});
+	res.redirect('back')
 })
 
 // gets all the consignors from the database
