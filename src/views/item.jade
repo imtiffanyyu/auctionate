@@ -38,3 +38,49 @@ body
 						i(class="small material-icons blue-text" id="viewConsignor") add
 					div(class="collapsible-body")
 						include ./forms/lotform.jade
+
+
+			ul(class="collapsible" data-collapsible="accordion")
+				li
+					div(class="btn waves-effect waves-light blue-grey darken-4 collapsible-header") View lot
+						i(class="small material-icons blue-text" id="viewConsignor") add
+					div(class="collapsible-body")
+						each item in items
+							form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
+								.row(class="col s12")
+							
+									input-field(class='col s2')
+										label(for="lotnumber") Lotnumber
+										input(value="#{item.lotnumber}" name="lotnumber" type="text" class="validate")
+
+									input-field(class='col s6')
+										label(for="itemname") Item Name
+										input(value="#{item.name}" name="name" type="text" class="validate")
+
+									input-field(class='col s4')
+										label(for="catergory") Catergory
+										input(value="#{item.category}" name="catergory" type="text" class="validate")
+
+								.row
+									input-field(class='col s12')
+										label(for="description") Description
+										input(value="#{item.description}" name="description" type="text" class="validate")
+								.row
+									input-field(class='col s4')
+										label(for="estimate") Estimate
+										input(value="#{item.estimate}" name="estimate" type="text" class="validate")
+
+									input-field(class='col s6')
+										label(for="reserve") Reserve
+										input(value="#{item.reserve}" name="reserve" type="text" class="validate")
+
+									input-field(class='col s4')
+										label(for="premium") Premium
+										input(value="#{item.premium}" name="premium" type="text" class="validate")
+
+									input-field(class='col s4')
+										label(for="consignorid") Consignor#Id
+										input(value="#{item.consignorId}" name="consignorId" type="text" class="validate")
+
+								.row
+									button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value='#{item.id}' name='updateid') Update

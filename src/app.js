@@ -94,7 +94,8 @@ app.get('/item', function (req, res) {
 				description: columns.description,
 				estimate: columns.estimate,
 				reserve: columns.reserve,
-				premium: columns.premium
+				premium: columns.premium,
+				id: columns.consignorId
 			}
 		});
 		res.render('item', {
@@ -117,12 +118,39 @@ app.post('/item', function (req, res) {
 	res.redirect('back') // back says" stay on this page
 });
 
+// app.delete('/item', function (req, res) {
+// 	Item.remove({
+
+// 	})
+// })
+
+// update item in the database
+app.put('/item', function (req, res) {
+	Item.findOne({
+		where: {
+			id: request.body.updateid
+		}
+	}).then(function (item) {
+		item.update({
+			lotnumber: req.body.lotnumber,
+			name: req.body.name,
+			category: req.body.catergory,
+			description: req.body.description,
+			estimate: req.body.estimate,
+			reserve: req.body.reserve,
+			premium: req.body.premium,
+			consignorId: req.body.consignorId
+		});
+	});
+})
+
 // gets all the consignors from the database
 app.get('/consignor', function (req, res) {
 	Consignor.findAll().then(function (consignors) {
 		consignors = consignors.map(function (consignorRow) {
 			var columns = consignorRow.dataValues;
 			return {
+				id: columns.id,
 				firstname: columns.firstname,
 				lastname: columns.lastname,
 				address: columns.address,
