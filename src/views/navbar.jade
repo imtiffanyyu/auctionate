@@ -9,16 +9,17 @@ ul#dropdown1(class="dropdown-content")
 .navbar-fixed
     nav(class="blue-grey darken-4")
         .nav-wrapper
-            a.brand-logo(href='/' style='margin-left:20px') Auctionhouse
+            a.brand-logo(href='/' style='margin-left:20px')
+                img(src="/img/auctionate_white.svg" style="margin:5px; height:50px")
             a(href="#" data-activates="mobile-demo" class="button-collapse")
                 i.material-icons menu
                 ul.right(id="nav-mobile" class="hide-on-med-and-down")
                     li
                         a(href="/") Dashboard
                     li
-                        a(href="/item") Lots
-                    li
                         a(href="/consignor") Consignors
+                    li
+                        a(href="/item") Lots
                     li
                         a(href="/bidder") Bidders
                     li
