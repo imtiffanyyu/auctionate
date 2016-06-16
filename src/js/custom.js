@@ -2,10 +2,11 @@ $(document).ready(function(){
 	$('.collapsible').collapsible();
 	$(".dropdown-button").dropdown({ beloworigin: true });
 
-	$('button[name=updateid]').ajax({
-		method: "PUT",
+	$('button[name=updateid]').on('click', function(e){
+		e.preventDefault()
+		console.log('Button clicked!')
+		$.ajax({
+		method: "POST"
 	})
-		.done(function( msg ) {
-		alert( "Data Updated: " + msg );
-		});
+	})
 });

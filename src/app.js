@@ -82,7 +82,7 @@ app.get('/', function (req, res) {
 	res.render('index');
 });
 
-// gets all the itmes in the database
+// gets all the items in the database
 app.get('/item', function (req, res) {
 	Item.findAll().then(function (items) {
 		items = items.map(function (itemRow) {
