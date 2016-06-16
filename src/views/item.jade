@@ -46,41 +46,59 @@ body
 						i(class="small material-icons blue-text" id="viewConsignor") add
 					div(class="collapsible-body")
 						each item in items
-							form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
-								.row(class="col s12")
-							
-									input-field(class='col s2')
-										label(for="lotnumber") Lotnumber
-										input(value="#{item.lotnumber}" name="lotnumber" type="text" class="validate")
+							input(value='#{item.id}' name='updateid' hidden)
+							div(class="gear")
+								label(for="lotnumber") Lotnumber
+								span(id="lotnumber" name="lotnumber" class="datainfo")= item.lotnumber
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
 
-									input-field(class='col s6')
-										label(for="itemname") Item Name
-										input(value="#{item.name}" name="name" type="text" class="validate")
+							div(class="gear")
+								label(for="itemname") Item Name
+								span(id="name" name="name" class="datainfo")= item.name
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
 
-									input-field(class='col s4')
-										label(for="category") Category
-										input(value="#{item.category}" name="category" type="text" class="validate")
+							div(class="gear")
+								label(for="category") Category
+								span(id="category" name="category" class="datainfo")= item.category
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
 
-								.row
-									input-field(class='col s12')
-										label(for="description") Description
-										input(value="#{item.description}" name="description" type="text" class="validate")
-								.row
-									input-field(class='col s4')
-										label(for="estimate") Estimate
-										input(value="#{item.estimate}" name="estimate" type="text" class="validate")
+							div(class="gear")
+								label(for="description") Description
+								span(id="description" name="description" class="datainfo")= item.description
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
 
-									input-field(class='col s6')
-										label(for="reserve") Reserve
-										input(value="#{item.reserve}" name="reserve" type="text" class="validate")
+							div(class="gear")
+								label(for="estimate") Estimate
+								span(id="estimate" name="estimate" class="datainfo")= item.estimate
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
 
-									input-field(class='col s4')
-										label(for="premium") Premium
-										input(value="#{item.premium}" name="premium" type="text" class="validate")
+							div(class="gear")
+								label(for="reserve") Reserve
+								span(id="reserve" name="reserve" class="datainfo")= item.reserve
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
 
-									input-field(class='col s4')
-										label(for="consignorid") Consignor#Id
-										input(value="#{item.consignorId}" name="consignorId" type="text" class="validate")
+							div(class="gear")
+								label(for="premium") Premium
+								span(id="premium" name="premium" class="datainfo")= item.premium
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
 
-								.row
-									button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value='#{item.id}' name='updateid') Update
+							div(class="gear")
+								label(for="consignorid") Consignor#Id
+								span(id="consignorId" name="consignorId" class="datainfo")= item.consignorId
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
