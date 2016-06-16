@@ -34,12 +34,14 @@ form(action='/item' method='post' class='col s12 white-text' style="margin:10px"
             textarea(class="materialize-textarea" placeholder="Description" id="description" type="text" class="validate" name="description")
     .row
         input-field(class='col s4')
-            label(for="estimate") Estimate Low
-            input(placeholder="Estimate" name="estimate" type="text" class="validate")
-            
+
+            label(for="estimatelow") Estimatelow
+            input(placeholder="Estimatelow" name="estimatelow" type="text" class="validate")
+
         input-field(class='col s4')
-            label(for="estimate") Estimate High
-            input(placeholder="Estimate" name="estimate" type="text" class="validate")
+            label(for="estimatehigh") Estimatehigh
+            input(placeholder="Estimatehigh" name="estimatehigh" type="text" class="validate")
+
 
         input-field(class='col s4')
             label(for="reserve") Reserve
