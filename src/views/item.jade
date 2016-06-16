@@ -76,8 +76,15 @@ body
 								a(class="savebtn") Save
 
 							div(class="gear")
-								label(for="estimate") Estimate
-								span(id="estimate" name="estimate" class="datainfo")= item.estimate
+								label(for="estimatelow") Estimate Low
+								span(id="estimatelow" name="estimatelow" class="datainfo")= item.estimatelow
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+
+							div(class="gear")
+								label(for="estimatehigh") Estimate High
+								span(id="estimatehigh" name="estimatehigh" class="datainfo")= item.estimatehigh
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
@@ -85,13 +92,6 @@ body
 							div(class="gear")
 								label(for="reserve") Reserve
 								span(id="reserve" name="reserve" class="datainfo")= item.reserve
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-
-							div(class="gear")
-								label(for="premium") Premium
-								span(id="premium" name="premium" class="datainfo")= item.premium
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
