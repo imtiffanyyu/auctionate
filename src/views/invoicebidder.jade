@@ -14,16 +14,16 @@ html(lang='en' class="blue-grey darken-4")
 		include ./navbar.jade
 
 		.row
-			div(class="col s5 blue-grey darken-2" style="height:100vh")
+			div(class="col s3 blue-grey darken-2" style="height:100vh")
 
-			div(class="col s5 blue-grey darken-1" style="height:100vh")
+			div(class="col s7 blue-grey darken-1" style="height:100vh")
 
-			div(class="col s2 blue-grey darken-3 white-text center" style="height:60vh")
+			div(class="col s2 blue-grey darken-3 white-text center" style="height:100vh")
 				h4 Invoices
 				form(action='/invoiceconsignor' method='get' class='col s12' style="margin:10px")
 					.row
 						input-field(class='col s12')
-							input(placeholder="Consigner #ID" name="printConsignor" type="text" class="validate")
+							input(placeholder="Consignor #ID" name="printConsignor" type="text" class="validate")
 					.row
 						button(class="btn waves-effect waves-light blue-grey darken-4" type="submit") Get Invoice
 				
@@ -33,5 +33,3 @@ html(lang='en' class="blue-grey darken-4")
 							input(placeholder="Bidder #ID" name="printBidder" type="text" class="validate")
 					.row
 						button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Get Invoice
-
-			div(class="col s2 blue-grey darken-2" style="height:40vh")

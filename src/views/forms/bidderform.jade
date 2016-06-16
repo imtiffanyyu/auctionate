@@ -1,5 +1,9 @@
-form(action='/consignor' method='post' class='col s12 white-text' style="margin:10px")
-    .row(class="col s12")
+form(action='/bidder' method='post' class='col s12 white-text' style="margin:10px")
+    .row
+        input-field(class='col s3 blue-grey darken-4')
+            label(for="bidderid") Bidder #ID
+            input(placeholder="Bidder#ID" name="bidderid" type="text" class="validate")
+    .row        
         input-field(class='col s4')
             label(for="firstname") First Name
             input(placeholder="First Name" name="firstname" type="text" class="validate")
@@ -34,19 +38,5 @@ form(action='/consignor' method='post' class='col s12 white-text' style="margin:
             label(for="email") Email
             input(placeholder="Email" name="email" type="text" class="validate")
 
-
-    .row
-        input-field(class='col s6')
-            label(for="payment") Payment
-            input(placeholder="Payment" name="payment" type="text" class="validate")
-
-        div(class="col s3")
-            label(for="commission") Commission
-            input(value="10%" id="commission" name="group1" type="text" class="validate")
-
-        div(class="col s3")
-            input-field
-                label(for="fee") Fee
-                input(placeholder="Fee" name="fee" type="text" class="validate")
     .row
         button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add

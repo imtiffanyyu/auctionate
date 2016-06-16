@@ -1,44 +1,56 @@
 form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
-    .row(class="col s12")
+    .row
         
-        input-field(class='col s2 blue-grey darken-4')
+        input-field(class='col s3 blue-grey darken-4')
             label(for="consignorid") Consignor #ID
             input(placeholder="Consignor#ID" name="consignorId" type="text" class="validate")
         
-        input-field(class='col s2 blue-grey darken-4')
+        input-field(class='col s3 offset-s1 blue-grey darken-4')
             label(for="lotid") Lot #ID
             input(placeholder="Lot#ID" name="lotid" type="text" class="validate")
         
-        input-field(class='col s2 blue-grey darken-4')
+        input-field(class='col s3 offset-s2 blue-grey darken-4')
             label(for="lotnumber") Lotnumber
             input(placeholder="Lotnumber" name="lotnumber" type="text" class="validate")
     
     .row
-        input-field(class='col s6')
+        input-field(class='col s5')
+             label(for="catergory") Category
+             input(placeholder="Catergory" name="catergory" type="text" class="validate")
+        
+        input-field(class='col s7')
             label(for="itemname") Item Name
             input(placeholder="Item Name" name="name" type="text" class="validate")
    
         input-field(class='col s4')
+<<<<<<< HEAD
             label(for="category") Category
             input(placeholder="Category" name="category" type="text" class="validate")
+=======
+        
+            label(for="category") Category
+            input(placeholder="Category" name="category" type="text" class="validate")
+
+>>>>>>> 69943728237f6b80f13fc29606b4ec1bde5eecda
 
     .row
         input-field(class='col s12')
             label(for="description") Description
-            input(placeholder="Description" name="description" type="text" class="validate")
+            textarea(class="materialize-textarea" placeholder="Description" id="description" type="text" class="validate" name="description")
     .row
         input-field(class='col s4')
-            label(for="estimate") Estimate
-            input(placeholder="Estimate" name="estimate" type="text" class="validate")
 
-        input-field(class='col s6')
+            label(for="estimatelow") Estimatelow
+            input(placeholder="Estimatelow" name="estimatelow" type="text" class="validate")
+
+        input-field(class='col s4')
+            label(for="estimatehigh") Estimatehigh
+            input(placeholder="Estimatehigh" name="estimatehigh" type="text" class="validate")
+
+
+        input-field(class='col s4')
             label(for="reserve") Reserve
             input(placeholder="Reserve" name="reserve" type="text" class="validate")
-    
-        input-field(class='col s4')
-            label(for="premium") Premium
-            input(placeholder="Premium" name="premium" type="text" class="validate")
-
             
     .row
         button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add
