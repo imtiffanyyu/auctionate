@@ -128,21 +128,14 @@ app.post('/item', function (req, res) {
 app.put('/item', function (req, res) {
 	Item.find({
 		where: {
-			id: request.body.updateid
+			id: req.body.updateid
 		}
 	}).then(function (item) {
 		item.update({
-			lotnumber: req.body.lotnumber,
-			name: req.body.name,
-			category: req.body.category,
-			description: req.body.description,
-			estimate: req.body.estimate,
-			reserve: req.body.reserve,
-			premium: req.body.premium,
-			consignorId: req.body.consignorId
+			//req.body.newid: req.body.newValue
 		});
 	});
-	res.redirect('back')
+	res.send({status: 'update worked'})
 })
 
 // gets all the consignors from the database
