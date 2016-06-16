@@ -19,7 +19,8 @@ var Item = sequelize.define('item', {
 	name: Sequelize.STRING,
 	category: Sequelize.STRING,
 	description: Sequelize.TEXT,
-	estimate: Sequelize.INTEGER,
+	estimatelow: Sequelize.INTEGER,
+	estimatehigh: Sequelize.INTEGER,
 	reserve: Sequelize.INTEGER,
 	premium: Sequelize.INTEGER
 });
@@ -90,7 +91,8 @@ app.get('/item', function (req, res) {
 				name: columns.name,
 				category: columns.category,
 				description: columns.description,
-				estimate: columns.estimate,
+				estimatelow: columns.estimatelow,
+				estimatehigh: columns.estimatehigh,
 				reserve: columns.reserve,
 				premium: columns.premium
 			}
@@ -107,7 +109,8 @@ app.post('/item', function (req, res) {
 		name: req.body.name,
 		category: req.body.catergory,
 		description: req.body.description,
-		estimate: req.body.estimate,
+		estimatelow: req.body.estimatelow,
+		estimatehigh: req.body.estimatehigh,
 		reserve: req.body.reserve,
 		premium: req.body.premium,
 		consignorId: req.body.consignorId

@@ -19,8 +19,12 @@ form(action='/item' method='post' class='col s12 white-text' style="margin:10px"
             input(placeholder="Description" name="description" type="text" class="validate")
     .row
         input-field(class='col s4')
-            label(for="estimate") Estimate
-            input(placeholder="Estimate" name="estimate" type="text" class="validate")
+            label(for="estimatelow") Estimatelow
+            input(placeholder="Estimatelow" name="estimatelow" type="text" class="validate")
+
+        input-field(class='col s4')
+            label(for="estimatehigh") Estimatehigh
+            input(placeholder="Estimatehigh" name="estimatehigh" type="text" class="validate")
 
         input-field(class='col s6')
             label(for="reserve") Reserve
