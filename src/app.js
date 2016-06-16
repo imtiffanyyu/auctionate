@@ -86,7 +86,10 @@ app.get('/', function (req, res) {
 
 // Invoice view for consignors
 app.get('/invoiceconsignor', function (req, res) {
-	res.render('invoiceconsignor');
+	req.query.consignor
+	res.render('invoiceconsignor', {
+
+	});
 });
 
 // Invoice view for consignors
