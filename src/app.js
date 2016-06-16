@@ -123,6 +123,7 @@ app.get('/consignor', function (req, res) {
 		consignors = consignors.map(function (consignorRow) {
 			var columns = consignorRow.dataValues;
 			return {
+				id: columns.id,
 				firstname: columns.firstname,
 				lastname: columns.lastname,
 				address: columns.address,
