@@ -1,4 +1,5 @@
 $(document).ready(function(){
+<<<<<<< HEAD
 	$('.collapsible').collapsible();
 	$(".dropdown-button").dropdown({ beloworigin: true });
 
@@ -9,4 +10,9 @@ $(document).ready(function(){
 		method: "POST"
 	})
 	})
+=======
+  $('.collapsible').collapsible();
+  $(".dropdown-button").dropdown({ beloworigin: true });
+  $('.modal-trigger').leanModal();
+>>>>>>> 9f0205321d8678686a415a70d1feb9ecf338e64e
 });

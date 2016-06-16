@@ -1,17 +1,31 @@
 form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
     .row(class="col s12")
         
-        input-field(class='col s2')
+        input-field(class='col s2 blue-grey darken-4')
+            label(for="consignorid") Consignor #ID
+            input(placeholder="Consignor#ID" name="consignorId" type="text" class="validate")
+        
+        input-field(class='col s2 blue-grey darken-4')
+            label(for="lotid") Lot #ID
+            input(placeholder="Lot#ID" name="lotid" type="text" class="validate")
+        
+        input-field(class='col s2 blue-grey darken-4')
             label(for="lotnumber") Lotnumber
             input(placeholder="Lotnumber" name="lotnumber" type="text" class="validate")
-
+    
+    .row
         input-field(class='col s6')
             label(for="itemname") Item Name
             input(placeholder="Item Name" name="name" type="text" class="validate")
    
         input-field(class='col s4')
+<<<<<<< HEAD
             label(for="category") Category
             input(placeholder="Category" name="category" type="text" class="validate")
+=======
+            label(for="catergory") Category
+            input(placeholder="Catergory" name="catergory" type="text" class="validate")
+>>>>>>> 9f0205321d8678686a415a70d1feb9ecf338e64e
 
     .row
         input-field(class='col s12')
@@ -30,9 +44,6 @@ form(action='/item' method='post' class='col s12 white-text' style="margin:10px"
             label(for="premium") Premium
             input(placeholder="Premium" name="premium" type="text" class="validate")
 
-        input-field(class='col s4')
-            label(for="consignorid") Consignor#Id
-            input(placeholder="Consignor#Id" name="consignorId" type="text" class="validate")
             
     .row
         button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add
