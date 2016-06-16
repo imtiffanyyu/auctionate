@@ -82,6 +82,16 @@ app.get('/', function (req, res) {
 	res.render('index');
 });
 
+// Invoice view for consignors
+app.get('/invoiceconsignor', function (req, res) {
+	res.render('invoiceconsignor');
+});
+
+// Invoice view for consignors
+app.get('/invoicebidder', function (req, res) {
+	res.render('invoicebidder');
+});
+
 // gets all the itmes in the database
 app.get('/item', function (req, res) {
 	Item.findAll().then(function (items) {
