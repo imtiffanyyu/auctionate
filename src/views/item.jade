@@ -19,12 +19,14 @@ body
 			table(class="white-text bordered highlight" id="consignors" cellspacing="0" width="100%")
 				thead
 					tr
+						th Item
 						th Lotnumber
 						th Item Name
 						th Description
 				tbody
 					each item in items
 						tr
+							td(class="itemid")=item.itemid
 							td=item.lotnumber
 							td=item.name
 							td=item.description
@@ -45,60 +47,63 @@ body
 					div(class="btn waves-effect waves-light blue-grey darken-4 collapsible-header") View lot
 						i(class="small material-icons blue-text" id="viewConsignor") add
 					div(class="collapsible-body")
-						each item in items
-							input(value='#{item.id}' name='updateid' hidden)
+						
+							div(class="gear")
+								label(for="displayitemid") Item ID
+								span(id="displayitemid" name="displayitemid" class="datainfo")
+
 							div(class="gear")
 								label(for="lotnumber") Lotnumber
-								span(id="lotnumber" name="lotnumber" class="datainfo")= item.lotnumber
+								span(id="lotnumber" name="lotnumber" class="datainfo")
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
 
 							div(class="gear")
 								label(for="itemname") Item Name
-								span(id="name" name="name" class="datainfo")= item.name
+								span(id="name" name="name" class="datainfo")
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
 
 							div(class="gear")
 								label(for="category") Category
-								span(id="category" name="category" class="datainfo")= item.category
+								span(id="category" name="category" class="datainfo")
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
 
 							div(class="gear")
 								label(for="description") Description
-								span(id="description" name="description" class="datainfo")= item.description
+								span(id="itemdescription" name="description" class="datainfo")
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
 
 							div(class="gear")
 								label(for="estimatelow") Estimate Low
-								span(id="estimatelow" name="estimatelow" class="datainfo")= item.estimatelow
+								span(id="estimatelow" name="estimatelow" class="datainfo")
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
 
 							div(class="gear")
 								label(for="estimatehigh") Estimate High
-								span(id="estimatehigh" name="estimatehigh" class="datainfo")= item.estimatehigh
+								span(id="estimatehigh" name="estimatehigh" class="datainfo")
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
 
 							div(class="gear")
 								label(for="reserve") Reserve
-								span(id="reserve" name="reserve" class="datainfo")= item.reserve
+								span(id="reserve" name="reserve" class="datainfo")
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
 
 							div(class="gear")
-								label(for="consignorid") Consignor#Id
-								span(id="consignorId" name="consignorId" class="datainfo")= item.consignorId
+								label(for="cconsignorId") Consignor#Id
+								span(id="consignorId" name="consignorId" class="datainfo")
 								
 								a(href="#" class="editlink") Edit Info
 								a(class="savebtn") Save
