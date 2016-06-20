@@ -1,3 +1,9 @@
+- Image uploads
+- Delete Function
+- Update on Bidder/Consignor
+- Invoices
+
+
 // PLAN
 1. Set up with tables.
 2. Three tables
