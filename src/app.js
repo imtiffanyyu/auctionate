@@ -98,7 +98,7 @@ app.get('/invoicebidder', function (req, res) {
 
 // gets all the items in the database
 app.get('/item', function (req, res) {
-	
+
 	Item.findAll().then(function (items) {
 		items = items.map(function (itemRow) {
 			var columns = itemRow.dataValues;
@@ -139,7 +139,7 @@ app.post('/item', function (req, res) {
 });
 
 app.get('/itemjson', function (req, res) {
-	Item.findById(req.query.clickeditem).then(function (clickeditems) {		
+	Item.findById(req.query.clickeditem).then(function (clickeditems) {
 		res.send(clickeditems);
 	})
 })
@@ -152,7 +152,7 @@ app.get('/itemjson', function (req, res) {
 
 // update item in the database
 app.put('/item', function (req, res) {
-	Item.findById(req.body.displayitemid).then(function (item) {			
+	Item.findById(req.body.displayitemid).then(function (item) {
 		var object = {};
 		object[req.body.newid] = req.body.newValue;
 		console.log(object);
