@@ -66,7 +66,7 @@ $(document).ready(function(){
 			$('#lotnumber').text (item.lotnumber)
 			$('#name').text (item.name)
 			$('#category').text (item.category)
-			$('#itemdescription').text (item.description)
+			$('#description').text (item.description)
 			$('#estimatelow').text (item.estimatelow)
 			$('#estimatehigh').text (item.estimatehigh)
 			$('#reserve').text (item.reserve)

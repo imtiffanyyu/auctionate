@@ -4,6 +4,10 @@ form(action='/item' method='post' class='col s12 white-text' style="margin:10px"
         input-field(class='col s3 blue-grey darken-4')
             label(for="consignorId") Consignor #ID
             input(placeholder="Consignor#ID" name="consignorId" type="text" class="validate")
+
+        input-field(class='col s3 blue-grey darken-4')
+            label(for="bidderId") Bidders #ID
+            input(placeholder="Bidder#ID" name="bidderId" type="text" class="validate")
         
         input-field(class='col s3 offset-s2 blue-grey darken-4')
             label(for="lotnumber") Lotnumber
@@ -23,7 +27,7 @@ form(action='/item' method='post' class='col s12 white-text' style="margin:10px"
     .row
         input-field(class='col s12')
             label(for="description") Description
-            textarea(class="materialize-textarea" placeholder="Description" id="description" type="text" class="validate" name="description")
+            textarea(class="materialize-textarea" placeholder="Description" type="text" class="validate" name="description")
     .row
         input-field(class='col s4')
 
