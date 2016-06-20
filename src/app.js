@@ -59,8 +59,8 @@ Consignor.hasMany(Item);
 Item.belongsTo(Consignor);
 
 // assigns items to bidder
-// Bidder.hasMany(Item);
-// Item.belongsTo(Bidder);
+Bidder.hasMany(Item);
+Item.belongsTo(Bidder);
 
 var app = express();
 
@@ -132,7 +132,8 @@ app.post('/item', function (req, res) {
 		estimatelow: req.body.estimatelow,
 		estimatehigh: req.body.estimatehigh,
 		reserve: req.body.reserve,
-		consignorId: req.body.consignorId
+		consignorId: req.body.consignorId,
+		bidderId: req.body.bidderId
 	});
 	res.redirect('back') // back says" stay on this page
 });
@@ -221,7 +222,8 @@ app.get('/bidder', function (req, res) {
 				zipcode: columns.zipcode,
 				city: columns.city,
 				payment: columns.payment,
-				shipping: columns.shipping
+				shipping: columns.shipping,
+				bidderId: columns.bidderId
 			}
 		});
 		res.render('bidder', {
