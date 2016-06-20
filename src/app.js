@@ -22,8 +22,7 @@ var Item = sequelize.define('item', {
 	description: Sequelize.TEXT,
 	estimatelow: Sequelize.INTEGER,
 	estimatehigh: Sequelize.INTEGER,
-	reserve: Sequelize.INTEGER,
-	premium: Sequelize.INTEGER
+	reserve: Sequelize.INTEGER
 });
 
 // create table called consignors
@@ -99,10 +98,12 @@ app.get('/invoicebidder', function (req, res) {
 
 // gets all the items in the database
 app.get('/item', function (req, res) {
+	
 	Item.findAll().then(function (items) {
 		items = items.map(function (itemRow) {
 			var columns = itemRow.dataValues;
 			return {
+				itemid: columns.id,
 				lotnumber: columns.lotnumber,
 				name: columns.name,
 				category: columns.category,
@@ -110,13 +111,15 @@ app.get('/item', function (req, res) {
 				estimatelow: columns.estimatelow,
 				estimatehigh: columns.estimatehigh,
 				reserve: columns.reserve,
-				premium: columns.premium,
-				id: columns.consignorId
+				consignorId: columns.consignorId
 			}
+
 		});
 		res.render('item', {
 			items: items
+			// itemtoview: data
 		});
+
 	});
 });
 
@@ -129,11 +132,16 @@ app.post('/item', function (req, res) {
 		estimatelow: req.body.estimatelow,
 		estimatehigh: req.body.estimatehigh,
 		reserve: req.body.reserve,
-		premium: req.body.premium,
 		consignorId: req.body.consignorId
 	});
 	res.redirect('back') // back says" stay on this page
 });
+
+app.get('/itemjson', function (req, res) {
+	Item.findById(req.query.clickeditem).then(function (clickeditems) {		
+		res.send(clickeditems);
+	})
+})
 
 // app.delete('/item', function (req, res) {
 // 	Item.remove({
@@ -143,16 +151,14 @@ app.post('/item', function (req, res) {
 
 // update item in the database
 app.put('/item', function (req, res) {
-	Item.find({
-		where: {
-			id: req.body.updateid
-		}
-	}).then(function (item) {
-		item.update({
-			//req.body.newid: req.body.newValue
-		});
-	});
-	res.send({status: 'update worked'})
+	Item.findById(req.body.displayitemid).then(function (item) {			
+		var object = {};
+		object[req.body.newid] = req.body.newValue;
+		console.log(object);
+		item.updateAttributes(object).then(function () {
+		res.send({status: 'update worked'})
+		})
+	})
 })
 
 // gets all the consignors from the database
