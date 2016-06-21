@@ -16,9 +16,8 @@ $(document).ready(function(){
 	$("button#canceladdconsignor").click(function() {
 		$("#consignorform").fadeOut('slow');
 	})
-/////////////////////////////////////////////////////////////
 
-////////////////////Item form buttons////////////////////
+///////////////////Item form buttons//////////////////////////
 	$("button#edititem").click(function() {
 		$("#edititemform").fadeIn('slow');
 	})
@@ -30,7 +29,7 @@ $(document).ready(function(){
 	$("button#canceladditem").click(function() {
 		$("#itemform").fadeOut('slow');
 	})
-/////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 	$(".editlink").on("click", function(e){
 	  e.preventDefault();
 		var dataset = $(this).prev(".datainfo");
