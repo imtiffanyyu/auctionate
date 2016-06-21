@@ -1,60 +1,43 @@
-div(id="editlotform" style="display:none")
-        div(class="col s1")
-            label(for="displayitemid") Item ID
-            input(id="displayitemid" name="displayitemid")
-
-        div(class="col s2")
-            label(for="lotnumber") Lotnumber
-            input(id="lotnumber" name="lotnumber")
-            
-            a(href="#" class="editlink") Edit Info
-            a(class="savebtn") Save
-
-        div(class="gear")
-            label(for="itemname") Item Name
-            span(id="name" name="name" class="datainfo")
-            
-            a(href="#" class="editlink") Edit Info
-            a(class="savebtn") Save
-
-        div(class="gear")
-            label(for="category") Category
-            span(id="category" name="category" class="datainfo")
-            
-            a(href="#" class="editlink") Edit Info
-            a(class="savebtn") Save
-
-        div(class="gear")
-            label(for="description") Description
-            span(id="itemdescription" name="description" class="datainfo")
-            
-            a(href="#" class="editlink") Edit Info
-            a(class="savebtn") Save
-
-        div(class="gear")
-            label(for="estimatelow") Estimate Low
-            span(id="estimatelow" name="estimatelow" class="datainfo")
-            
-            a(href="#" class="editlink") Edit Info
-            a(class="savebtn") Save
-
-        div(class="gear")
-            label(for="estimatehigh") Estimate High
-            span(id="estimatehigh" name="estimatehigh" class="datainfo")
-            
-            a(href="#" class="editlink") Edit Info
-            a(class="savebtn") Save
-
-        div(class="gear")
-            label(for="reserve") Reserve
-            span(id="reserve" name="reserve" class="datainfo")
-            
-            a(href="#" class="editlink") Edit Info
-            a(class="savebtn") Save
-
-        div(class="gear")
+div(id="editlotform" class='col s12 white-text' style="margin:10px")
+    .row
+        input-field(class='col s3 blue-grey darken-4')
             label(for="consignorId") Consignor#Id
-            span(id="consignorId" name="consignorId" class="datainfo")
+            input(id="consignorId" name="consignorId" class="datainfo")
+        
+        input-field(class='col s3 blue-grey darken-4')
+            label(for="displayitemid") Item ID
+            input(id="displayitemid" name="displayitemid" class="datainfo")
+
+        input-field(class='col s3 offset-s2 blue-grey darken-4')
+            label(for="lotnumber") Lotnumber
+            input(id="lotnumber" name="lotnumber" class="datainfo")
+    
+    .row
+        input-field(class='col s7')
+            label(for="itemname") Item Name
+            input(id="name" name="name" class="datainfo")
+
+        input-field(class='col s4')
+            label(for="category") Category
+            input(id="category" name="category" class="datainfo")
             
-            a(href="#" class="editlink") Edit Info
-            a(class="savebtn") Save
+    .row
+        input-field(class='col s12')
+            label(for="description") Description
+            textarea(id="itemdescription" name="description" class="materialize-textarea datainfo")
+
+    .row
+        input-field(class='col s4')
+            label(for="estimatelow") Estimate Low
+            input(id="estimatelow" name="estimatelow" class="datainfo")
+
+        input-field(class='col s4')
+            label(for="estimatehigh") Estimate High
+            input(id="estimatehigh" name="estimatehigh" class="datainfo")
+            
+        input-field(class='col s4')
+            label(for="reserve") Reserve
+            input(id="reserve" name="reserve" class="datainfo")
+            
+            
+        a(class="savebtn") Save
