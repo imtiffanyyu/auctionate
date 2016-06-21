@@ -132,8 +132,7 @@ app.post('/item', function (req, res) {
 		estimatelow: req.body.estimatelow,
 		estimatehigh: req.body.estimatehigh,
 		reserve: req.body.reserve,
-		consignorId: req.body.consignorId,
-		bidderId: req.body.bidderId
+		consignorId: req.body.consignorId
 	});
 	res.redirect('back') // back says" stay on this page
 });

@@ -4,6 +4,8 @@ $(document).ready(function(){
 	$(".dropdown-button").dropdown({ beloworigin: true });
 	$('.modal-trigger').leanModal();
 
+	$("#consignors").dataTable();
+
 ////////////////////Consignor form buttons////////////////////
 	$("button#editconsignor").click(function() {
 		$("#editconsignorform").fadeIn('slow');

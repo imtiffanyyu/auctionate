@@ -19,4 +19,6 @@ label { display: inline-block; font-weight: bold; color: white; font-size: 12px;
 .savebtn:hover { color: #fff; background: #607db7; text-decoration: none; }
 .savebtn:active { background: #556790; }
 
-
+table.dataTable#consignors tbody tr {
+    background-color: initial;
+}
