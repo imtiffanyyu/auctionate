@@ -15,10 +15,46 @@ html(lang='en' class="blue-grey darken-4")
 
 		.row
 			div(class="col s4 blue-grey darken-2 white-text center" style="height:100vh")
-				h4 Invoice Consignor #
+				h4= "Invoice Consignor #" + consignorId
 
 			div(class="col s6 blue-grey darken-1" style="height:100vh")
 				div(class="white center" id="invoice" style="width:595px;height:842px")
+					div(class="invoice-box")
+						table(cellpadding="0" cellspacing="0")
+							tr(class="top")
+								td(colspan="2")
+									table
+										tr
+											td(class="title") Auctionate
+											td Date:
+							tr(class="information")
+								td(colspan="2")
+									table
+										tr
+											td= data.address
+												br
+												|#{data.zipcode} #{data.city}
+												br
+												|#{data.country}
+											td= data.firstname + " " + data.lastname
+												br
+												|#{data.email}
+							tr(class="heading")
+								td ID
+								td Item
+								td Price
+								td Final
+							each item in data.items
+								tr(class="item")
+									td=item.id
+									td=item.name
+									td=item.reserve
+									td 0
+							tr(class="total")
+								td
+								td
+								td Total: 
+
 
 			div(class="col s2 blue-grey darken-3 white-text center" style="height:100vh")
 				h4 Invoices
