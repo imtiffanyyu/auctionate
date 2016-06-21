@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('.collapsible').collapsible();
 	$(".dropdown-button").dropdown({ beloworigin: true });
 	$('.modal-trigger').leanModal();
-	
+
 	$(".editlink").on("click", function(e){
 		e.preventDefault();
 		var dataset = $(this).prev(".datainfo");
@@ -11,11 +11,11 @@ $(document).ready(function(){
 		var theid   = dataset.attr("id");
 		var newid   = theid+"-form";
 		var currval = dataset.text();
-		
+
 		dataset.empty();
-		
+
 		$('<input type="text" name="'+newid+'" id="'+newid+'" value="'+currval+'" class="hlite">').appendTo(dataset);
-		
+
 		$(this).css("display", "none");
 		savebtn.css("display", "block");
 	});
@@ -26,23 +26,23 @@ $(document).ready(function(){
 		console.log(displayitemid);
 
 		var elink   = $(this).prev(".editlink"); // looks for "editlink" before savebtn
-		var dataset = elink.prev(".datainfo"); // looks for "datainfo" before editlink 
+		var dataset = elink.prev(".datainfo"); // looks for "datainfo" before editlink
 		var newid   = dataset.attr("id"); // grabs id for form creaton
 		var cinput  = "#"+newid+"-form"; // creates form for the id
 		var einput  = $(cinput); // 
-		
-		var newval  = einput.val(); 
+
+		var newval  = einput.val();
 		console.log('form value is: ' + newval)
 		$(this).css("display", "none");
 		einput.remove();
 		dataset.html(newval); // Supposed to update the values
 		elink.css("display", "block");
-		
+
 
 		$.ajax({
 			method: "PUT",
 			url: "/item",
-			data: { 
+			data: {
 				newid: newid,
 				newValue: newval,
 				displayitemid: displayitemid
@@ -53,11 +53,11 @@ $(document).ready(function(){
 	$("tr").click(function() {
 		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 		console.log("You clicked item " + clickeditem)
-		
+
 		$.ajax({
 			method: "GET",
 			url: "/itemjson",
-			data: { 
+			data: {
 				clickeditem: clickeditem
 			}
 		}).done(function(item){
@@ -82,10 +82,10 @@ $(document).ready(function(){
 		$.ajax({
 			method: "DELETE",
 			url: "/item",
-			data: { 
+			data: {
 				deleteitemid: deleteitemid
 			}
 		})
 	})
-	
+
 });
