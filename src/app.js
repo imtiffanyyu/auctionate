@@ -144,11 +144,17 @@ app.get('/itemjson', function (req, res) {
 	})
 })
 
-// app.delete('/item', function (req, res) {
-// 	Item.remove({
-
-// 	})
-// })
+app.delete('/item', function (req, res) {
+	Item.destroy({
+		where:
+		{
+			id: req.body.deleteitemid
+		}},
+		function (err, res) {
+			if (err) return res.send(500, err)
+				res.send('Item deleted')
+		})
+})
 
 // update item in the database
 app.put('/item', function (req, res) {

@@ -31,7 +31,7 @@ $(document).ready(function(){
 	})
 ////////////////////////////////////////////////////////////
 	$(".editlink").on("click", function(e){
-	  e.preventDefault();
+		e.preventDefault();
 		var dataset = $(this).prev(".datainfo");
 		var savebtn = $(this).next(".savebtn");
 		var theid   = dataset.attr("id");
@@ -66,7 +66,7 @@ $(document).ready(function(){
 
 
 		$.ajax({
-		  	method: "PUT",
+			method: "PUT",
 			url: "/item",
 			data: {
 				newid: newid,
@@ -81,7 +81,7 @@ $(document).ready(function(){
 		console.log("You clicked item " + clickeditem)
 
 		$.ajax({
-		  	method: "GET",
+			method: "GET",
 			url: "/itemjson",
 			data: {
 				clickeditem: clickeditem
@@ -99,6 +99,18 @@ $(document).ready(function(){
 			$('#consignorId').text (item.consignorId)
 		})
 
-		})
+	})
 
+	$(".deleteitem").click(function() {
+		var deleteitemid = $("#displayitemid").text();
+		console.log(deleteitemid);
+
+		$.ajax({
+			method: "DELETE",
+			url: "/item",
+			data: {
+				deleteitemid: deleteitemid
+			}
+		})
+	})
 });
