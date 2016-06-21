@@ -42,5 +42,71 @@ body
 
 			include ./forms/lotform.jade
 
-
 			include ./forms/editlotform.jade
+
+			ul(class="collapsible" data-collapsible="accordion")
+				li
+					div(class="btn waves-effect waves-light blue-grey darken-4 collapsible-header") View lot
+						i(class="small material-icons blue-text" id="viewConsignor") add
+					div(class="collapsible-body")
+						
+							div(class="gear")
+								label(for="displayitemid") Item ID
+								span(id="displayitemid" name="displayitemid" class="datainfo")
+
+							div(class="gear")
+								label(for="lotnumber") Lotnumber
+								span(id="lotnumber" name="lotnumber" class="datainfo")
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+
+							div(class="gear")
+								label(for="itemname") Item Name
+								span(id="name" name="name" class="datainfo")
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+
+							div(class="gear")
+								label(for="category") Category
+								span(id="category" name="category" class="datainfo")
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+
+							div(class="gear")
+								label(for="description") Description
+								span(id="description" name="description" class="datainfo")
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+
+							div(class="gear")
+								label(for="estimatelow") Estimate Low
+								span(id="estimatelow" name="estimatelow" class="datainfo")
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+
+							div(class="gear")
+								label(for="estimatehigh") Estimate High
+								span(id="estimatehigh" name="estimatehigh" class="datainfo")
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+
+							div(class="gear")
+								label(for="reserve") Reserve
+								span(id="reserve" name="reserve" class="datainfo")
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+
+							div(class="gear")
+								label(for="cconsignorId") Consignor#Id
+								span(id="consignorId" name="consignorId" class="datainfo")
+								
+								a(href="#" class="editlink") Edit Info
+								a(class="savebtn") Save
+							button(class="deleteitem btn waves-effect waves-light blue-grey darken-4" type="submit" value="delete") Delete

@@ -32,6 +32,7 @@ $(document).ready(function(){
 		$("#itemform").fadeOut('slow');
 	})
 ////////////////////////////////////////////////////////////
+
 	$(".editlink").on("click", function(e){
 		e.preventDefault();
 		var dataset = $(this).prev(".datainfo");
@@ -57,7 +58,11 @@ $(document).ready(function(){
 		var dataset = elink.prev(".datainfo"); // looks for "datainfo" before editlink
 		var newid   = dataset.attr("id"); // grabs id for form creaton
 		var cinput  = "#"+newid+"-form"; // creates form for the id
+<<<<<<< HEAD
 		var einput  = $(cinput); //
+=======
+		var einput  = $(cinput); //
+>>>>>>> refs/remotes/origin/master
 
 		var newval  = einput.val();
 		console.log('form value is: ' + newval)
@@ -115,4 +120,8 @@ $(document).ready(function(){
 			}
 		})
 	})
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 });
