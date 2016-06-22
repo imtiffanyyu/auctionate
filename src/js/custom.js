@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+	var alldata = $('.finalprice')
+	var total = 0
+	for (var i = 0; i < alldata.length; i++) {
+		total += parseFloat( $(alldata[i]).text() )
+	}
+
+	$('#totalamount').text( total - $('#adminfee').text() )
+
 	$('.collapsible').collapsible();
 	$(".dropdown-button").dropdown({ beloworigin: true });
 	$('.modal-trigger').leanModal();
