@@ -3,7 +3,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var favicon = require('express-favicon');
+var PDFDocument = require ('pdfkit');
 //var jquery = require('jquery');
+
+// create document
+var doc = new PDFDocument();
 
 // connect to the database
 var sequelize = new Sequelize('auctionate', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
@@ -85,10 +89,43 @@ app.get('/', function (req, res) {
 
 // Invoice view for consignors
 app.get('/invoiceconsignor', function (req, res) {
+
 	req.query.consignor
 	res.render('invoiceconsignor', {
 
 	});
+
+	console.log(req.query.consignor);
+	Consignor.findOne({
+		where: {id: req.query.consignor},
+		include: [Item]
+	}).then (function (details) {
+		var data = details
+
+		// var data = details.map(function (detail) {
+		// 	return {
+		// 		id: detail.item.id,
+		// 		name: detail.item.name,
+		// 		reserve: detail.item.reserve,
+		// 		firstname: detail.firstname,
+		// 		lastname: detail.lastname,
+		// 		address: detail.address,
+		// 		zipcode: detail.zipcode,
+		// 		city: detail.city,
+		// 		country: detail.country,
+		// 		phone: detail.phone,
+		// 		email: detail.email,
+		// 		bankaccount: detail.bankaccount,
+		// 		commission: detail.commission,
+		// 		fee: detail.consignorfee
+		// 	};
+		// })
+	res.render('invoiceconsignor', {
+		consignorId: req.query.consignor,
+		data: data
+	});
+	})
+
 });
 
 // Invoice view for consignors
