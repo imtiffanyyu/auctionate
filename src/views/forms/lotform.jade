@@ -1,47 +1,50 @@
-form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
-    .row
-        
-        input-field(class='col s3 blue-grey darken-4')
-            label(for="consignorId") Consignor #ID
-            input(placeholder="Consignor#ID" name="consignorId" type="text" class="validate")
-
-        input-field(class='col s3 blue-grey darken-4')
-            label(for="bidderId") Bidders #ID
-            input(placeholder="Bidder#ID" name="bidderId" type="text" class="validate")
-        
-        input-field(class='col s3 offset-s2 blue-grey darken-4')
-            label(for="lotnumber") Lotnumber
-            input(placeholder="Lotnumber" name="lotnumber" type="text" class="validate")
-    
-    .row
-        
-        input-field(class='col s7')
-            label(for="itemname") Item Name
-            input(placeholder="Item Name" name="name" type="text" class="validate")
-   
-        input-field(class='col s4')
-
-            label(for="category") Category
-            input(placeholder="Category" name="category" type="text" class="validate")
-
-    .row
-        input-field(class='col s12')
-            label(for="description") Description
-            textarea(class="materialize-textarea" placeholder="Description" type="text" class="validate" name="description")
-    .row
-        input-field(class='col s4')
-
-            label(for="estimatelow") Estimatelow
-            input(placeholder="Estimatelow" name="estimatelow" type="text" class="validate")
-
-        input-field(class='col s4')
-            label(for="estimatehigh") Estimatehigh
-            input(placeholder="Estimatehigh" name="estimatehigh" type="text" class="validate")
-
-
-        input-field(class='col s4')
-            label(for="reserve") Reserve
-            input(placeholder="Reserve" name="reserve" type="text" class="validate")
+div(id="itemform" style="display:none")
+    form(action='/item' method='post' class='col s12 white-text' style="margin:10px")
+        .row
             
-    .row
-        button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add
+            input-field(class='col s3 blue-grey darken-4')
+                label(for="consignorId") Consignor #ID
+                input(placeholder="Consignor#ID" name="consignorId" type="text" class="validate")
+
+            input-field(class='col s3 blue-grey darken-4')
+                label(for="bidderId") Bidders #ID
+                input(placeholder="Bidder#ID" name="bidderId" type="text" class="validate")
+            
+            input-field(class='col s3 offset-s2 blue-grey darken-4')
+                label(for="lotnumber") Lotnumber
+                input(placeholder="Lotnumber" name="lotnumber" type="text" class="validate")
+        
+        .row
+            
+            input-field(class='col s7')
+                label(for="itemname") Item Name
+                input(placeholder="Item Name" name="name" type="text" class="validate")
+       
+            input-field(class='col s4')
+
+                label(for="category") Category
+                input(placeholder="Category" name="category" type="text" class="validate")
+
+        .row
+            input-field(class='col s12')
+                label(for="description") Description
+                textarea(class="materialize-textarea" placeholder="Description" type="text" class="validate" name="description")
+        .row
+            input-field(class='col s4')
+
+                label(for="estimatelow") Estimatelow
+                input(placeholder="Estimatelow" name="estimatelow" type="text" class="validate")
+
+            input-field(class='col s4')
+                label(for="estimatehigh") Estimatehigh
+                input(placeholder="Estimatehigh" name="estimatehigh" type="text" class="validate")
+
+
+            input-field(class='col s4')
+                label(for="reserve") Reserve
+                input(placeholder="Reserve" name="reserve" type="text" class="validate")
+                
+        .row
+            button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add" style="width:150px") Add
+            a(class="btn waves-effect waves-light deep-orange darken-4" id="canceladditem" style="margin-left:10px;width:150px") Cancel
+        
