@@ -59,13 +59,12 @@ table.dataTable#items tbody tr {
         text-align:right;
     }
 
-<<<<<<< HEAD
+
     .invoice-box table tr td:nth-child(5){
         text-align:right;
     }
     
-=======
->>>>>>> 6566421565f8841dc45baa2272eb5f45dc3e0665
+
     .invoice-box table tr.top table td{
         padding-bottom:20px;
     }
