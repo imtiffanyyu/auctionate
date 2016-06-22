@@ -4,6 +4,34 @@ $(document).ready(function(){
 	$(".dropdown-button").dropdown({ beloworigin: true });
 	$('.modal-trigger').leanModal();
 
+	$("#consignors").dataTable( {
+		"lengthChange": false
+	});
+	$("#items").dataTable( {
+		"lengthChange": false
+	});
+//////////////////////////////////////////////////////////////////////
+	$("button#editconsignor").click(function() {
+		$("#editconsignorform").fadeIn('slow');
+	})
+
+	$("button#addconsignor").click(function() {
+		$("#consignorform").fadeIn('slow');
+	})
+
+	$("a#canceladdconsignor").click(function() {
+		$("#consignorform").fadeOut('slow');
+	})
+
+	$("button#additem").click(function() {
+		$("#editlotform").fadeOut('slow');
+		$("#itemform").fadeIn('slow');
+	})
+
+	$("a#canceladditem").click(function() {
+		$("#itemform").fadeOut('slow');
+	})
+////////////////////////////////////////////////////////////////
 	$(".editlink").on("click", function(e){
 		e.preventDefault();
 		var dataset = $(this).prev(".datainfo");
@@ -29,7 +57,6 @@ $(document).ready(function(){
 		var dataset = elink.prev(".datainfo"); // looks for "datainfo" before editlink
 		var newid   = dataset.attr("id"); // grabs id for form creaton
 		var cinput  = "#"+newid+"-form"; // creates form for the id
-		var einput  = $(cinput); // 
 
 		var newval  = einput.val();
 		console.log('form value is: ' + newval)
@@ -51,6 +78,8 @@ $(document).ready(function(){
 	});
 
 	$("tr").click(function() {
+		$("#itemform").fadeOut('slow');
+		$("#editlotform").fadeIn('slow');
 		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 		console.log("You clicked item " + clickeditem)
 
@@ -87,5 +116,4 @@ $(document).ready(function(){
 			}
 		})
 	})
-
 });

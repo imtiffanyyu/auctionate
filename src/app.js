@@ -6,7 +6,7 @@ var favicon = require('express-favicon');
 var PDFDocument = require ('pdfkit');
 //var jquery = require('jquery');
 
-// create document 
+// create document
 var doc = new PDFDocument();
 
 // connect to the database
@@ -89,13 +89,19 @@ app.get('/', function (req, res) {
 
 // Invoice view for consignors
 app.get('/invoiceconsignor', function (req, res) {
+
+	req.query.consignor
+	res.render('invoiceconsignor', {
+
+	});
+
 	console.log(req.query.consignor);
 	Consignor.findOne({
 		where: {id: req.query.consignor},
 		include: [Item]
-	}).then (function (details) {		
+	}).then (function (details) {
 		var data = details
-		
+
 		// var data = details.map(function (detail) {
 		// 	return {
 		// 		id: detail.item.id,
@@ -119,7 +125,7 @@ app.get('/invoiceconsignor', function (req, res) {
 		data: data
 	});
 	})
-	
+
 });
 
 // Invoice view for consignors
@@ -129,7 +135,7 @@ app.get('/invoicebidder', function (req, res) {
 
 // gets all the items in the database
 app.get('/item', function (req, res) {
-	
+
 	Item.findAll().then(function (items) {
 		items = items.map(function (itemRow) {
 			var columns = itemRow.dataValues;
@@ -163,14 +169,13 @@ app.post('/item', function (req, res) {
 		estimatelow: req.body.estimatelow,
 		estimatehigh: req.body.estimatehigh,
 		reserve: req.body.reserve,
-		consignorId: req.body.consignorId,
-		bidderId: req.body.bidderId
+		consignorId: req.body.consignorId
 	});
 	res.redirect('back') // back says" stay on this page
 });
 
 app.get('/itemjson', function (req, res) {
-	Item.findById(req.query.clickeditem).then(function (clickeditems) {		
+	Item.findById(req.query.clickeditem).then(function (clickeditems) {
 		res.send(clickeditems);
 	})
 })
@@ -189,7 +194,7 @@ app.delete('/item', function (req, res) {
 
 // update item in the database
 app.put('/item', function (req, res) {
-	Item.findById(req.body.displayitemid).then(function (item) {			
+	Item.findById(req.body.displayitemid).then(function (item) {
 		var object = {};
 		object[req.body.newid] = req.body.newValue;
 		console.log(object);
