@@ -43,17 +43,27 @@ html(lang='en' class="blue-grey darken-4")
 								td ID
 								td Item
 								td Price
+								td Commission
 								td Final
 							each item in data.items
 								tr(class="item")
 									td=item.id
 									td=item.name
 									td=item.reserve
-									td 0
+									td=item.reserve * (data.commission/100)
+									td.finalprice=item.reserve - (item.reserve * (data.commission/100))
+							tr(class="item")
+								td Less
+								td Admin Fee
+								td
+								td
+								td#adminfee= data.fee
 							tr(class="total")
 								td
 								td
 								td Total: 
+								td
+								td#totalamount
 
 
 			div(class="col s2 blue-grey darken-3 white-text center" style="height:100vh")

@@ -3,11 +3,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var favicon = require('express-favicon');
-var PDFDocument = require ('pdfkit');
+//var PDFDocument = require ('pdfkit');
 //var jquery = require('jquery');
 
 // create document 
-var doc = new PDFDocument();
+// var doc = new PDFDocument();
 
 // connect to the database
 var sequelize = new Sequelize('auctionate', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
@@ -95,6 +95,9 @@ app.get('/invoiceconsignor', function (req, res) {
 		include: [Item]
 	}).then (function (details) {		
 		var data = details
+		console.log(details.commission)
+		console.log(details.fee)
+		
 		
 		// var data = details.map(function (detail) {
 		// 	return {
