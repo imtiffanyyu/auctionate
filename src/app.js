@@ -85,12 +85,6 @@ app.get('/', function (req, res) {
 
 // Invoice view for consignors
 app.get('/invoiceconsignor', function (req, res) {
-
-	req.query.consignor
-	res.render('invoiceconsignor', {
-
-	});
-
 	console.log(req.query.consignor);
 	Consignor.findOne({
 		where: {id: req.query.consignor},
