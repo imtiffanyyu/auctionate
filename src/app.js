@@ -3,16 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var favicon = require('express-favicon');
-//var PDFDocument = require ('pdfkit');
 //var jquery = require('jquery');
-
-<<<<<<< HEAD
-// create document 
-// var doc = new PDFDocument();
-=======
-// create document
-var doc = new PDFDocument();
->>>>>>> 6566421565f8841dc45baa2272eb5f45dc3e0665
 
 // connect to the database
 var sequelize = new Sequelize('auctionate', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
