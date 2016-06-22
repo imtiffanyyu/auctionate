@@ -97,14 +97,10 @@ app.get('/invoiceconsignor', function (req, res) {
 		include: [Item]
 	}).then (function (details) {
 		var data = details
-<<<<<<< HEAD
+
 		console.log(details.commission)
 		console.log(details.fee)
 		
-		
-=======
-
->>>>>>> 6566421565f8841dc45baa2272eb5f45dc3e0665
 		// var data = details.map(function (detail) {
 		// 	return {
 		// 		id: detail.item.id,
