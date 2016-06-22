@@ -20,5 +20,8 @@ label { display: inline-block; font-weight: bold; color: white; font-size: 12px;
 .savebtn:active { background: #556790; }
 
 table.dataTable#consignors tbody tr {
-    background-color: initial;
+    background-color: initial !important;
+}
+table.dataTable#items tbody tr {
+    background-color: initial !important;
 }

@@ -4,9 +4,13 @@ $(document).ready(function(){
 	$(".dropdown-button").dropdown({ beloworigin: true });
 	$('.modal-trigger').leanModal();
 
-	$("#consignors").dataTable();
-
-////////////////////Consignor form buttons////////////////////
+	$("#consignors").dataTable( {
+		"lengthChange": false
+	});
+	$("#items").dataTable( {
+		"lengthChange": false
+	});
+//////////////////////////////////////////////////////////////////////
 	$("button#editconsignor").click(function() {
 		$("#editconsignorform").fadeIn('slow');
 	})
@@ -15,24 +19,19 @@ $(document).ready(function(){
 		$("#consignorform").fadeIn('slow');
 	})
 
-	$("button#canceladdconsignor").click(function() {
+	$("a#canceladdconsignor").click(function() {
 		$("#consignorform").fadeOut('slow');
 	})
 
-///////////////////Item form buttons//////////////////////////
-	$("button#edititem").click(function() {
-		$("#edititemform").fadeIn('slow');
-	})
-
 	$("button#additem").click(function() {
+		$("#editlotform").fadeOut('slow');
 		$("#itemform").fadeIn('slow');
 	})
 
-	$("button#canceladditem").click(function() {
+	$("a#canceladditem").click(function() {
 		$("#itemform").fadeOut('slow');
 	})
-////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////
 	$(".editlink").on("click", function(e){
 		e.preventDefault();
 		var dataset = $(this).prev(".datainfo");
@@ -58,11 +57,6 @@ $(document).ready(function(){
 		var dataset = elink.prev(".datainfo"); // looks for "datainfo" before editlink
 		var newid   = dataset.attr("id"); // grabs id for form creaton
 		var cinput  = "#"+newid+"-form"; // creates form for the id
-<<<<<<< HEAD
-		var einput  = $(cinput); //
-=======
-		var einput  = $(cinput); //
->>>>>>> refs/remotes/origin/master
 
 		var newval  = einput.val();
 		console.log('form value is: ' + newval)
@@ -84,6 +78,8 @@ $(document).ready(function(){
 	});
 
 	$("tr").click(function() {
+		$("#itemform").fadeOut('slow');
+		$("#editlotform").fadeIn('slow');
 		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 		console.log("You clicked item " + clickeditem)
 
@@ -120,8 +116,4 @@ $(document).ready(function(){
 			}
 		})
 	})
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
 });
