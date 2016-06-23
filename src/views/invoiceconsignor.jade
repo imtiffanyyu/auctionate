@@ -15,10 +15,57 @@ html(lang='en' class="blue-grey darken-4")
 
 		.row
 			div(class="col s4 blue-grey darken-2 white-text center" style="height:100vh")
-				h4 Invoice Consignor #
+				h4= "Invoice Consignor #" + consignorId
 
 			div(class="col s6 blue-grey darken-1" style="height:100vh")
 				div(class="white center" id="invoice" style="width:595px;height:842px")
+					div(class="invoice-box")
+						table(cellpadding="0" cellspacing="0")
+							tr(class="top")
+								td(colspan="2")
+									table
+										tr
+											td(class="title") 
+												img(src="/img/auctionate_black.svg" style="margin:5px; height:50px")
+											td Date:
+							tr(class="information")
+								td(colspan="2")
+									table
+										tr
+											td= data.address
+												br
+												|#{data.zipcode} #{data.city}
+												br
+												|#{data.country}
+											td= data.firstname + " " + data.lastname
+												br
+												|#{data.email}
+							tr(class="heading")
+								td ID
+								td Item
+								td Price
+								td Commission
+								td Final
+							each item in data.items
+								tr(class="item")
+									td=item.id
+									td=item.name
+									td=item.reserve
+									td=item.reserve * (data.commission/100)
+									td.finalprice=item.reserve - (item.reserve * (data.commission/100))
+							tr(class="item")
+								td Less
+								td Admin Fee
+								td
+								td
+								td#adminfee= data.fee
+							tr(class="total")
+								td
+								td
+								td Total: 
+								td
+								td#totalamount
+
 
 			div(class="col s2 blue-grey darken-3 white-text center" style="height:100vh")
 				h4 Invoices
@@ -32,6 +79,6 @@ html(lang='en' class="blue-grey darken-4")
 				form(action='/invoicebidder' method='get' class='col s12' style="margin:10px")
 					.row
 						input-field(class='col s12')
-							input(placeholder="Bidder #ID" name="printBidder" type="text" class="validate")
+							input(placeholder="Bidder #ID" name="bidder" type="text" class="validate")
 					.row
 						button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Get Invoice

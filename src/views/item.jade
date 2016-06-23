@@ -5,10 +5,13 @@ head
 	link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
 	link(rel="stylesheet" href="/css/style.css")
-	meta(name='viewport', content='width=device-width, initial-scale=1')
+	link(rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css")
+	
 	script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
+	script(src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js")
 	script(src="/js/custom.js")
+	meta(name='viewport', content='width=device-width, initial-scale=1')
 
 body
 	include ./navbar.jade
@@ -16,95 +19,28 @@ body
 	.row
 
 		div(class="blue-grey darken-3 col s6" style="height:100vh")
-			table(class="white-text bordered highlight" id="consignors" cellspacing="0" width="100%")
-				thead
-					tr
-						th Item
-						th Lotnumber
-						th Item Name
-						th Description
-				tbody
-					each item in items
+			.row
+				div(style="margin-top:10px;")
+					button(class="btn waves-effect waves-light blue-grey darken-4" id="additem" style=" float:right") Add Lot
+			.row
+				table(class="highlight white-text" id="items" cellspacing="0" width="100%")
+					thead
 						tr
-							td(class="itemid")=item.itemid
-							td=item.lotnumber
-							td=item.name
-							td=item.description
+							th ID
+							th Lot
+							th Name
+							th Description
+					tbody
+						each item in items
+							tr
+								td(class="itemid")=item.itemid
+								td=item.lotnumber
+								td=item.name
+								td=item.description
 
 
 		div(class="blue-grey darken-2 col s6" style="height:100vh")
 
-			ul(class="collapsible" data-collapsible="accordion")
-				li
-					div(class="btn waves-effect waves-light blue-grey darken-4 collapsible-header") Add new lot
-						i(class="small material-icons blue-text" id="viewConsignor") add
-					div(class="collapsible-body")
-						include ./forms/lotform.jade
-
-
-			ul(class="collapsible" data-collapsible="accordion")
-				li
-					div(class="btn waves-effect waves-light blue-grey darken-4 collapsible-header") View lot
-						i(class="small material-icons blue-text" id="viewConsignor") add
-					div(class="collapsible-body")
-						
-							div(class="gear")
-								label(for="displayitemid") Item ID
-								span(id="displayitemid" name="displayitemid" class="datainfo")
-
-							div(class="gear")
-								label(for="lotnumber") Lotnumber
-								span(id="lotnumber" name="lotnumber" class="datainfo")
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-
-							div(class="gear")
-								label(for="itemname") Item Name
-								span(id="name" name="name" class="datainfo")
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-
-							div(class="gear")
-								label(for="category") Category
-								span(id="category" name="category" class="datainfo")
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-
-							div(class="gear")
-								label(for="description") Description
-								span(id="description" name="description" class="datainfo")
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-
-							div(class="gear")
-								label(for="estimatelow") Estimate Low
-								span(id="estimatelow" name="estimatelow" class="datainfo")
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-
-							div(class="gear")
-								label(for="estimatehigh") Estimate High
-								span(id="estimatehigh" name="estimatehigh" class="datainfo")
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-
-							div(class="gear")
-								label(for="reserve") Reserve
-								span(id="reserve" name="reserve" class="datainfo")
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-
-							div(class="gear")
-								label(for="cconsignorId") Consignor#Id
-								span(id="consignorId" name="consignorId" class="datainfo")
-								
-								a(href="#" class="editlink") Edit Info
-								a(class="savebtn") Save
-							button(class="deleteitem btn waves-effect waves-light blue-grey darken-4" type="submit" value="delete") Delete
+			include ./forms/lotform.jade
+			
+			include ./forms/editlotform.jade

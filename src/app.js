@@ -150,7 +150,40 @@ app.get('/', function (req, res) {
 
 // Invoice view for consignors
 app.get('/invoiceconsignor', function (req, res) {
-	res.render('invoiceconsignor');
+	console.log(req.query.consignor);
+	Consignor.findOne({
+		where: {id: req.query.consignor},
+		include: [Item]
+	}).then (function (details) {
+		var data = details
+
+		console.log(details.commission)
+		console.log(details.fee)
+		
+		// var data = details.map(function (detail) {
+		// 	return {
+		// 		id: detail.item.id,
+		// 		name: detail.item.name,
+		// 		reserve: detail.item.reserve,
+		// 		firstname: detail.firstname,
+		// 		lastname: detail.lastname,
+		// 		address: detail.address,
+		// 		zipcode: detail.zipcode,
+		// 		city: detail.city,
+		// 		country: detail.country,
+		// 		phone: detail.phone,
+		// 		email: detail.email,
+		// 		bankaccount: detail.bankaccount,
+		// 		commission: detail.commission,
+		// 		fee: detail.consignorfee
+		// 	};
+		// })
+	res.render('invoiceconsignor', {
+		consignorId: req.query.consignor,
+		data: data
+	});
+	})
+
 });
 
 // Invoice view for consignors
@@ -160,7 +193,7 @@ app.get('/invoicebidder', function (req, res) {
 
 // gets all the items in the database
 app.get('/item', function (req, res) {
-	
+
 	Item.findAll().then(function (items) {
 		items = items.map(function (itemRow) {
 			var columns = itemRow.dataValues;
@@ -194,14 +227,13 @@ app.post('/item', function (req, res) {
 		estimatelow: req.body.estimatelow,
 		estimatehigh: req.body.estimatehigh,
 		reserve: req.body.reserve,
-		consignorId: req.body.consignorId,
-		bidderId: req.body.bidderId
+		consignorId: req.body.consignorId
 	});
 	res.redirect('back') // back says" stay on this page
 });
 
 app.get('/itemjson', function (req, res) {
-	Item.findById(req.query.clickeditem).then(function (clickeditems) {		
+	Item.findById(req.query.clickeditem).then(function (clickeditems) {
 		res.send(clickeditems);
 	})
 })
@@ -220,7 +252,7 @@ app.delete('/item', function (req, res) {
 
 // update item in the database
 app.put('/item', function (req, res) {
-	Item.findById(req.body.displayitemid).then(function (item) {			
+	Item.findById(req.body.displayitemid).then(function (item) {
 		var object = {};
 		object[req.body.newid] = req.body.newValue;
 		console.log(object);
