@@ -45,3 +45,15 @@ form(action='/item' method='post' class='col s12 white-text' style="margin:10px"
             
     .row
         button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Add
+
+script.
+    (200, {'Content-Type': 'text/html' });
+<form action="/item1" enctype="multipart/form-data" method="post"> <br><br><input multiple="multiple" name="upload" type="file"br>
+<input type="submit" value="add" style="color:black" /></form>
+
+
+
+//- form(action="/item1" enctype="multipart/form-data" method="post")
+//-     .row
+//-         input(multiple="multiple" name="upload" type="file")
+//-         input(type="submit" value="Upload" style="color:black")
