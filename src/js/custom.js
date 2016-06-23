@@ -19,47 +19,47 @@ $(document).ready(function(){
 		"lengthChange": false
 	});
 //////////////////////////////////////////////////////////////////////
-	$("button#editconsignor").click(function() {
-		$("#editconsignorform").fadeIn('slow');
-	})
+$("button#editconsignor").click(function() {
+	$("#editconsignorform").fadeIn('slow');
+})
 
-	$("button#addconsignor").click(function() {
-		$("#consignorform").fadeIn('slow');
-	})
+$("button#addconsignor").click(function() {
+	$("#consignorform").fadeIn('slow');
+})
 
-	$("a#canceladdconsignor").click(function() {
-		$("#consignorform").fadeOut('slow');
-	})
+$("a#canceladdconsignor").click(function() {
+	$("#consignorform").fadeOut('slow');
+})
 
-	$("button#additem").click(function() {
-		$("#editlotform").fadeOut('slow');
-		$("#itemform").fadeIn('slow');
-	})
+$("button#additem").click(function() {
+	$("#editlotform").fadeOut('slow');
+	$("#itemform").fadeIn('slow');
+})
 
-	$("a#canceladditem").click(function() {
-		$("#itemform").fadeOut('slow');
-	})
+$("a#canceladditem").click(function() {
+	$("#itemform").fadeOut('slow');
+})
 ////////////////////////////////////////////////////////////////
-	$(".editlink").on("click", function(e){
-		e.preventDefault();
-		var dataset = $(this).prev(".datainfo");
-		var savebtn = $(this).next(".savebtn");
-		var theid   = dataset.attr("id");
-		var newid   = theid+"-form";
-		var currval = dataset.text();
+$(".editlink").on("click", function(e){
+	e.preventDefault();
+	var dataset = $(this).prev(".datainfo");
+	var savebtn = $(this).next(".savebtn");
+	var theid   = dataset.attr("id");
+	var newid   = theid+"-form";
+	var currval = dataset.text();
 
-		dataset.empty();
+	dataset.empty();
 
-		$('<input type="text" name="'+newid+'" id="'+newid+'" value="'+currval+'" class="hlite">').appendTo(dataset);
+	$('<input type="text" name="'+newid+'" id="'+newid+'" value="'+currval+'" class="hlite">').appendTo(dataset);
 
-		$(this).css("display", "none");
-		savebtn.css("display", "block");
-	});
-	$(".savebtn").on("click", function(e){
-		e.preventDefault();
+	$(this).css("display", "none");
+	savebtn.css("display", "block");
+});
+$(".savebtn").on("click", function(e){
+	e.preventDefault();
 
-		var displayitemid = $("#displayitemid").text();
-		console.log(displayitemid);
+	var displayitemid = $("#displayitemid").text();
+	console.log(displayitemid);
 
 		var elink   = $(this).prev(".editlink"); // looks for "editlink" before savebtn
 		var dataset = elink.prev(".datainfo"); // looks for "datainfo" before editlink
@@ -85,9 +85,9 @@ $(document).ready(function(){
 		})
 	});
 
-	$("tr").click(function() {
-		$("#itemform").fadeOut('slow');
-		$("#editlotform").fadeIn('slow');
+$("tr").click(function() {
+	$("#itemform").fadeOut('slow');
+	$("#editlotform").fadeIn('slow');
 		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 		console.log("You clicked item " + clickeditem)
 
@@ -112,16 +112,60 @@ $(document).ready(function(){
 
 	})
 
-	$(".deleteitem").click(function() {
-		var deleteitemid = $("#displayitemid").text();
-		console.log(deleteitemid);
+$(".deleteitem").click(function() {
+	var deleteitemid = $("#displayitemid").text();
+	console.log(deleteitemid);
 
-		$.ajax({
-			method: "DELETE",
-			url: "/item",
-			data: {
-				deleteitemid: deleteitemid
-			}
-		})
+	$.ajax({
+		method: "DELETE",
+		url: "/item",
+		data: {
+			deleteitemid: deleteitemid
+		}
 	})
+})
+
+$('#createlot').on('click', function(event) {
+	event.preventDefault();
+
+	// New lot
+	$.post(
+		'/item',{
+			consignorId: $('[name="consignorId"]').val(),
+			bidderId: $('[name="bidderId"]').val(),
+			lotnumber: $('[name="lotnumber"]').val(),
+			name: $('[name="name"]').val(),
+			category: $('[name="category"]').val(),
+			description: $('[name="description"]').val(),
+			estimatelow: $('[name="estimatelow"]').val(),
+			estimatehigh: $('[name="estimatehigh"]').val(),
+			reserve: $('[name="reserve"]').val(),
+
+		}, function(result){ console.log(result) }
+		)
+	// End new lot
+
+	// File upload
+	var data = new FormData();
+	$.each($('[name="upload"]')[0].files, function(i, file) {
+		data.append('file-'+i, file);
+	});
+	$.ajax({
+		url: '/item1',
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		type: 'POST',
+		success: function(data){
+		}
+	});
+	// End file upload
+
+});
+
+
+
+
+
 });
