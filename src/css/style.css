@@ -61,9 +61,11 @@ table.dataTable  tbody tr.odd {
         text-align:right;
     }
 
+
     .invoice-box table tr td:nth-child(5){
         text-align:right;
     }
+
 
     .invoice-box table tr.top table td{
         padding-bottom:20px;
