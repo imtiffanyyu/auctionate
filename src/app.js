@@ -67,6 +67,7 @@ Bidder.hasMany(Item);
 Item.belongsTo(Bidder);
 
 var app = express();
+app.locals.moment = require('moment');
 
 app.use(qt.static(__dirname + './src/'));
 app.use(express.static('./src/'));
@@ -156,31 +157,10 @@ app.get('/invoiceconsignor', function (req, res) {
 		include: [Item]
 	}).then (function (details) {
 		var data = details
-
-		console.log(details.commission)
-		console.log(details.fee)
 		
-		// var data = details.map(function (detail) {
-		// 	return {
-		// 		id: detail.item.id,
-		// 		name: detail.item.name,
-		// 		reserve: detail.item.reserve,
-		// 		firstname: detail.firstname,
-		// 		lastname: detail.lastname,
-		// 		address: detail.address,
-		// 		zipcode: detail.zipcode,
-		// 		city: detail.city,
-		// 		country: detail.country,
-		// 		phone: detail.phone,
-		// 		email: detail.email,
-		// 		bankaccount: detail.bankaccount,
-		// 		commission: detail.commission,
-		// 		fee: detail.consignorfee
-		// 	};
-		// })
-	res.render('invoiceconsignor', {
-		consignorId: req.query.consignor,
-		data: data
+		res.render('invoiceconsignor', {
+			consignorId: req.query.consignor,
+			data: data
 	});
 	})
 
@@ -188,7 +168,20 @@ app.get('/invoiceconsignor', function (req, res) {
 
 // Invoice view for consignors
 app.get('/invoicebidder', function (req, res) {
-	res.render('invoicebidder');
+	console.log(req.query.bidder);
+	Bidder.findOne({
+		where: {id: req.query.bidder},
+		include: [Item]
+	}).then (function (details) {
+		var data = details;
+
+		res.render('invoicebidder', {
+			bidderId: req.query.bidder,
+			data: data
+		});
+
+	})
+	
 });
 
 // gets all the items in the database
