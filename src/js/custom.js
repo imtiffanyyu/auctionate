@@ -6,6 +6,12 @@ $(document).ready(function(){
 		total += parseFloat( $(alldata[i]).text() )
 	}
 
+	var oTable = $('#consignors').DataTable();
+	$('#myInputTextField').keyup(function(){
+      oTable.search($(this).val()).draw() ;
+	})
+
+
 	$('#totalamount').text( total - $('#adminfee').text() )
 
 	$('.collapsible').collapsible();

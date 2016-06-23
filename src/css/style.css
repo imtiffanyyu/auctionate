@@ -20,12 +20,14 @@ label { display: inline-block; font-weight: bold; color: white; font-size: 12px;
 .savebtn:active { background: #556790; }
 
 
-table.dataTable#consignors tbody tr {
+table.dataTable  tbody tr.even {
     background-color: initial !important;
 }
-table.dataTable#items tbody tr {
-    background-color: initial !important;
+
+table.dataTable  tbody tr.odd {
+    background-color:#263238 !important
 }
+
 
 /* invoice template */
 .invoice-box{
@@ -59,13 +61,10 @@ table.dataTable#items tbody tr {
         text-align:right;
     }
 
-<<<<<<< HEAD
     .invoice-box table tr td:nth-child(5){
         text-align:right;
     }
-    
-=======
->>>>>>> 6566421565f8841dc45baa2272eb5f45dc3e0665
+
     .invoice-box table tr.top table td{
         padding-bottom:20px;
     }
