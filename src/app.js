@@ -3,6 +3,10 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var favicon = require('express-favicon');
+var	formidable = require ('formidable');
+var util = require('util');
+var fs = require('fs-extra');
+var qt = require('quickthumb');
 //var jquery = require('jquery');
 
 // connect to the database
@@ -64,9 +68,69 @@ Item.belongsTo(Bidder);
 
 var app = express();
 
+app.use(qt.static(__dirname + './src/'));
 app.use(express.static('./src/'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(favicon('./src/img/favicon.ico'));
+
+// app.post('/upload', function (req, res){
+// 	var form = new formidable.IncomingForm();
+// 	form.parse(req, function(err, fields, files) {
+// 		res.writeHead(200, {'content-type': 'text/plain'});
+// 		res.write('received upload:\n\n');
+// 		res.end(util.inspect({fields: fields, files: files}));
+// 	});
+
+// 	form.on('end', function(fields, files) {
+// 		/* temporary location of our uploaded file */
+// 		var temp_path = this.openedFiles[0].path;
+// 		/* the file name of the uploaded file */
+// 		var file_name = this.openedFiles[0].name;
+// 		 location where we want to copy the uploaded file 
+// 		var new_location = 'uploads/';
+
+// 		fs.copy(temp_path, new_location + file_name, function(err) {
+// 			if (err) {
+// 				console.log(err);
+// 			} else {
+// 				console.log("success!")
+// 			}
+// 		});
+// 	});
+// });
+
+
+// app.get('/image', function (req, res){
+//   res.writeHead(200, {'Content-Type': 'text/html' });
+//   var form = '<form action="/upload" enctype="multipart/form-data" method="post">Add a title: <input name="title" type="text" /><br><br><input multiple="multiple" name="upload" type="file" /><br><br><input type="submit" value="Upload" /></form>';
+//   res.end(form); 
+// }); 
+
+
+app.post('/item1', function (req, res){
+	var form = new formidable.IncomingForm();
+	form.parse(req, function(err, fields, files) {
+	});
+		
+	form.on('end', function(fields, files) {
+		/* temporary location of our uploaded file */
+		var temp_path = this.openedFiles[0].path;
+		/* the file name of the uploaded file */
+		var file_name = this.openedFiles[0].name;
+		/* location where we want to copy the uploaded file */
+		var new_location = 'uploads/';
+
+		fs.copy(temp_path, new_location + file_name, function(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log("success!")
+			}
+		});
+		res.redirect('back')
+	});
+});
+
 
 app.use(session({
 	secret: 'oh wow very secret much security',
@@ -81,6 +145,7 @@ app.set('view engine', 'jade');
 app.get('/', function (req, res) {
 	res.render('index');
 });
+
 
 
 // Invoice view for consignors

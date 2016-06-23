@@ -8,10 +8,14 @@
     "express": "^4.14.0",
     "express-favicon": "^1.0.1",
     "express-session": "^1.13.0",
+    "formidable": "^1.0.17",
+    "fs-extra": "^0.30.0",
     "jade": "^1.11.0",
     "jquery": "^3.0.0",
     "pg": "^5.1.0",
-    "sequelize": "^3.23.3"
+    "quickthumb": "0.0.12",
+    "sequelize": "^3.23.3",
+    "util": "^0.10.3"
   },
   "devDependencies": {},
   "scripts": {
