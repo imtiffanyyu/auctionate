@@ -32,12 +32,12 @@ body
 						th
 				tbody
 					each consignor in consignors
-						tr
-							td=consignor.id
+						tr(class="editconsignor")
+							td(class="clickedconsignorid")=consignor.id
 							td=consignor.firstname +" "+ consignor.lastname
 							td=consignor.city
 							td
-								button(class="btn waves-effect waves-light blue-grey darken-4" type="get" value="get" id="editconsignor") edit
+								button(class="btn waves-effect waves-light blue-grey darken-4" type="get" value="get") edit
 								
 							
 
