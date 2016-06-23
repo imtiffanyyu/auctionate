@@ -40,10 +40,12 @@ $(document).ready(function(){
 	$("button#additem").click(function() {
 		$("#editlotform").fadeOut('slow');
 		$("#itemform").fadeIn('slow');
+		$("#canceladditem").fadeIn('slow');
 	})
 
 	$("a#canceladditem").click(function() {
 		$("#itemform").fadeOut('slow');
+		$("#canceladditem").fadeOut('slow')
 	})
 ////////////////////////////////////////////////////////////////
 	$(".editlink").on("click", function(e){

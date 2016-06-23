@@ -1,0 +1,36 @@
+doctype html
+html(lang='en' class="blue-grey darken-4")
+	head
+		title Auction House Dashboard
+		link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
+		link(rel="stylesheet" href="/css/style.css")
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
+		script(src="/js/custom.js")
+
+	body
+		include ./navbar.jade
+
+
+		.row
+			div(class="col s10 blue-grey darken-2" style="height:100vh")
+			
+
+
+			div(class="col s2 blue-grey darken-3 white-text center" style="height:100vh")
+				h4 Invoices
+				form(action='/invoiceconsignor' method='get' class='col s12' style="margin:10px")
+					.row
+						input-field(class='col s12')
+							input(placeholder="Consigner #ID" name="consignor" type="text" class="validate")
+					.row
+						button(class="btn waves-effect waves-light blue-grey darken-4" type="submit") Get Invoice
+				
+				form(action='/invoicebidder' method='get' class='col s12' style="margin:10px")
+					.row
+						input-field(class='col s12')
+							input(placeholder="Bidder #ID" name="bidder" type="text" class="validate")
+					.row
+						button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="add") Get Invoice
