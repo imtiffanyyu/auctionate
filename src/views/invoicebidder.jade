@@ -14,9 +14,53 @@ html(lang='en' class="blue-grey darken-4")
 		include ./navbar.jade
 
 		.row
-			div(class="col s3 blue-grey darken-2" style="height:100vh")
-
-			div(class="col s7 blue-grey darken-1" style="height:100vh")
+			div(class="col s4 blue-grey darken-2 white-text center" style="height:100vh")
+				h4= "Invoice Bidder #" + bidderId
+			div(class="col s6 blue-grey darken-1" style="height:100vh")
+				div(class="white center" id="invoice" style="width:595px;height:842px")
+					div(class="invoice-box")
+						table(cellpadding="0" cellspacing="0")
+							tr(class="top")
+								td(colspan="2")
+									table
+										tr
+											td(class="title")
+												img(src="/img/auctionate_black.svg" style="margin:5px; height:50px")
+											td #{moment().format('DD/MM/YYYY')}
+							tr(class="information")
+								td(colspan="2")
+									table
+										tr
+											td= data.address
+												br
+												|#{data.zipcode} #{data.city}
+												br
+												|#{data.country}
+											td= data.firstname + " " + data.lastname
+												br
+												|#{data.email}
+							tr(class="heading")
+								td ID
+								td Item
+								td Price
+								td Final
+							each item in data.items
+								tr(class="item")
+									td=item.id
+									td=item.name
+									td=item.reserve
+									td.finalprice=item.reserve
+							tr(class="item")
+								td Plus
+								td Shipping + Tax
+								td
+								td
+								td#adminfee
+							tr(class="total")
+								td
+								td
+								td Total: 
+								td#totalamount
 
 			div(class="col s2 blue-grey darken-3 white-text center" style="height:100vh")
 				h4 Invoices
