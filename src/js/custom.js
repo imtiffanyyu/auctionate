@@ -6,12 +6,6 @@ $(document).ready(function(){
 		total += parseFloat( $(alldata[i]).text() )
 	}
 
-	var oTable = $('#consignors').DataTable();
-	$('#myInputTextField').keyup(function(){
-      oTable.search($(this).val()).draw() ;
-	})
-
-
 	$('#totalamount').text( total - $('#adminfee').text() )
 
 	$('.collapsible').collapsible();
@@ -45,6 +39,7 @@ $(document).ready(function(){
 
 	$("a#canceladditem").click(function() {
 		$("#itemform").fadeOut('slow');
+		$("#editlotform").fadeOut('slow');
 		$("#canceladditem").fadeOut('slow')
 	})
 ////////////////////////////////////////////////////////////////
@@ -96,6 +91,7 @@ $(document).ready(function(){
 	$("tr").click(function() {
 		$("#itemform").fadeOut('slow');
 		$("#editlotform").fadeIn('slow');
+		$("#canceladditem").fadeIn('slow');
 		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 		console.log("You clicked item " + clickeditem)
 

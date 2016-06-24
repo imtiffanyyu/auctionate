@@ -29,6 +29,7 @@ div(id="itemform" style="display:none")
             input-field(class='col s12')
                 label(for="description") Description
                 textarea(class="materialize-textarea" placeholder="Description" type="text" class="validate" name="description")
+                
         .row
             input-field(class='col s4')
 
@@ -49,17 +50,7 @@ div(id="itemform" style="display:none")
         .row
             form
             
-            script.
-                (200, {'Content-Type': 'text/html' });
-            <form action="/item1" enctype="multipart/form-data" method="post"> <br><br><input multiple="multiple" name="upload" type="file"br>
-            <input class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" value="add" /></form>
-
-
-
-//- form(action="/item1" enctype="multipart/form-data" method="post")
-//-     .row
-//-         input(multiple="multiple" name="upload" type="file")
-//-         input(type="submit" value="Upload" style="color:black")
-
-           
-        
+                script.
+                    (200, {'Content-Type': 'text/html' });
+                <form action="/item1" enctype="multipart/form-data" method="post"> <br><br><input multiple="multiple" name="upload" type="file"br>
+                <input class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" value="add" /></form>
