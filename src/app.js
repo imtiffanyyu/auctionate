@@ -307,6 +307,7 @@ app.get('/bidder', function (req, res) {
 		bidders = bidders.map(function (bidderRow) {
 			var columns = bidderRow.dataValues;
 			return {
+				id: columns.id,
 				firstname: columns.firstname,
 				lastname: columns.lastname,
 				phone: columns.phone,
@@ -315,8 +316,7 @@ app.get('/bidder', function (req, res) {
 				zipcode: columns.zipcode,
 				city: columns.city,
 				payment: columns.payment,
-				shipping: columns.shipping,
-				bidderId: columns.bidderId
+				shipping: columns.shipping
 			}
 		});
 		res.render('bidder', {
@@ -324,6 +324,12 @@ app.get('/bidder', function (req, res) {
 		});
 	});
 });
+
+app.get('/bidderjson', function (req, res) {
+	Bidder.findById(req.query.clickedbidder).then(function (clickedbidders) {
+		res.send(clickedbidders);
+	})
+})
 
 app.post('/bidder', function (req, res) {
 	Bidder.create({
@@ -340,6 +346,31 @@ app.post('/bidder', function (req, res) {
 	});
 	res.redirect('back') // back says: stay on this page
 });
+
+// delete bidder from the database
+app.delete('/bidder', function (req, res) {
+	Bidder.destroy({
+		where:
+		{
+			id: req.body.deletebidderid
+		}},
+		function (err, res) {
+			if (err) return res.send(500, err)
+				res.send('Bidder deleted')
+		})
+})
+
+// update bidder in the database
+app.put('/bidder', function (req, res) {
+	Bidder.findById(req.body.displaybidderid).then(function (bidder) {
+		var object = {};
+		object[req.body.newid] = req.body.newValue;
+		console.log(object);
+		bidder.updateAttributes(object).then(function () {
+		res.send({status: 'update worked'})
+		})
+	})
+})
 
 sequelize.sync().then(function () {
 	var server = app.listen(3000, function () {
