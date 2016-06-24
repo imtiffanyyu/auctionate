@@ -142,10 +142,13 @@ $(document).ready(function(){
 	$("button#additem").click(function() {
 		$("#editlotform").fadeOut('slow');
 		$("#itemform").fadeIn('slow');
+		$("#canceladditem").fadeIn('slow');
 	})
 
 	$("a#canceladditem").click(function() {
 		$("#itemform").fadeOut('slow');
+		$("#editlotform").fadeOut('slow');
+		$("#canceladditem").fadeOut('slow')
 	})
  
 
@@ -166,6 +169,7 @@ $(document).ready(function(){
 		savebtn.css("display", "block");
 	});
 
+<<<<<<< HEAD
 	$(".savebtn").on("click", function(e){
 		e.preventDefault();
 
@@ -200,6 +204,19 @@ $(document).ready(function(){
 	$(".itemclicked").click(function() {
 		$("#itemform").fadeOut('slow');
 		$("#editlotform").fadeIn('slow');
+=======
+
+$("tr").click(function() {
+	$("#itemform").fadeOut('slow');
+	$("#editlotform").fadeIn('slow');
+	$(".itemclicked").click(function() {
+		$("#itemform").fadeOut('slow');
+		$("#editlotform").fadeIn('slow');
+		$("#canceladditem").fadeIn('slow');
+
+		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
+		console.log("You clicked item " + clickeditem)
+>>>>>>> 23f1ad9cdffe8591c3097c7bfa37a2aa6dd90e66
 
 			var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 			console.log("You clicked item " + clickeditem)
@@ -238,6 +255,76 @@ $(document).ready(function(){
 		})
 	})
 
+<<<<<<< HEAD
+=======
+
+$('#createlot').on('click', function(event) {
+		event.preventDefault();
+
+	// New lot
+	$.post(
+		'/item',{
+			consignorId: $('[name="consignorId"]').val(),
+			lotnumber: $('[name="lotnumber"]').val(),
+			name: $('[name="name"]').val(),
+			category: $('[name="category"]').val(),
+			description: $('[name="description"]').val(),
+			estimatelow: $('[name="estimatelow"]').val(),
+			estimatehigh: $('[name="estimatehigh"]').val(),
+			reserve: $('[name="reserve"]').val(),
+
+		}, function(result){ console.log(result) }
+		)
+	// End new lot
+
+	// File upload
+	var data = new FormData();
+	$.each($('[name="upload"]')[0].files, function(i, file) {
+		data.append('file-'+i, file);
+	});
+	$.ajax({
+		url: '/item1',
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		type: 'POST',
+		success: function(data){
+		}
+	});
+	// End file upload
+
+});
+	$('#createbidder').on('click', function(event) {
+		event.preventDefault();
+
+	$.post(
+		'/bidder',{
+			firstname: $('[name="firstname"]').val(),
+			lastname: $('[name="lastname"]').val(),
+			phone: $('[name="phone"]').val(),
+			email: $('[name="email"]').val(),
+			address: $('[name="address"]').val(),
+			zipcode: $('[name="zipcode"]').val(),
+			city: $('[name="country"]').val(),
+			payment: $('[name="consignorId"]').val()
+		}, function(result){ console.log(result) }
+		)
+	$.ajax({
+		url: '/bidder',
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		type: 'POST',
+		success: function(data){
+		}
+	});
+});
+
+});
+
+>>>>>>> 23f1ad9cdffe8591c3097c7bfa37a2aa6dd90e66
 	$('#createlot').on('click', function(event) {
 		event.preventDefault();
 
@@ -302,3 +389,7 @@ $(document).ready(function(){
 		});
 	});
 });
+<<<<<<< HEAD
+=======
+});
+>>>>>>> 23f1ad9cdffe8591c3097c7bfa37a2aa6dd90e66
