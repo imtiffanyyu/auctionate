@@ -1,56 +1,77 @@
 div(id="editconsignorform" style="display:none")
-    p#firstname
-    p#lastname
-    form(action='/consignor' method='post' class='col s12 black-text' style="margin:10px")
-        .row(class="col s12")
-            input-field(class='col s4')
-                label(for="firstname") First Name
-                input(name="firstname" type="text" class="validate")
+        
+        div(class="gear")
+            label(for="displayconsignorid") Consignor ID
+            span(id="displayconsignorid" name="displayconsignorid" class="datainfo")
+        
 
-            input-field(class='col s8')
-                label(for="lastname") Last Name
-                input(name="lastname" type="text" class="validate")
+        div(class="gear")
+            label(for="firstname") First Name
+            span#firstname(name="firstname" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
 
-        .row    
-            input-field(class='col s12')
-                label(for="address") Address
-                input#address(name="address" type="text" class="validate")
+        div(class="gear")
+            label(for="lastname") Last Name
+            span#lastname(name="lastname" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+
+        div(class="gear")    
+            label(for="address") Address
+            span#address(name="address" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+
+        div(class="gear")
+            label(for="zipcode") Zipcode
+            span#zipcode(name="zipcode" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+
+        div(class="gear")
+            label(for="city") City
+            span#city(name="city" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+
+        div(class="gear")
+            label(for="country") Country
+            span#country(name="country" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+        
+        div(class="gear")
+            label(for="phone") Phone
+            span#phone(name="phone" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+
+        div(class="gear")
+            label(for="email") Email
+            span#email(name="email" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+
+
+        div(class="gear")
+            label(for="bankaccount") Bank Account
+            span#bankaccount(name="bankaccount" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+
+        div(class="gear")
+            label(for="commission") Commission - %
+            span#commission(name="commission" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
+
+
+        div(class="gear")
+            label(for="fee") Fee - €
+            span#fee(name="fee" type="text" class="datainfo")
+            a(href="#" class="ceditlink") Edit Info
+            a(class="csavebtn") Save
 
         .row
-            input-field(class='col s2')
-                label(for="zipcode") Zipcode
-                input#zipcode(name="zipcode" type="text" class="validate")
-
-            input-field(class='col s4')
-                label(for="city") City
-                input#city(name="city" type="text" class="validate")
-
-            input-field(class='col s6')
-                label(for="country") Country
-                input#country(name="country" type="text" class="validate")
-        .row
-            input-field(class='col s4')
-                label(for="phone") Phone
-                input#phone(name="phone" type="text" class="validate")
-
-            input-field(class='col s8')
-                label(for="email") Email
-                input#email(name="email" type="text" class="validate")
-
-
-        .row
-            input-field(class='col s6')
-                label(for="bankaccount") Bank Account
-                input#bankaccount(name="bankaccount" type="text" class="validate")
-
-            div(class="col s3")
-                label(for="commission") Commission - %
-                input#commission(value="10" name="commission" type="text" class="validate")
-
-
-            div(class="col s3")
-                input-field
-                    label(for="fee") Fee - €
-                    input#fee(value="10" name="fee" type="text" class="validate")
-        .row
-            button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="save") Save
+            button(class="deleteconsignor btn waves-effect waves-light blue-grey darken-4" type="submit" value="delete") Delete
