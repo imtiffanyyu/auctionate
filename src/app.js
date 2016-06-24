@@ -74,39 +74,7 @@ app.use(express.static('./src/'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(favicon('./src/img/favicon.ico'));
 
-// app.post('/upload', function (req, res){
-// 	var form = new formidable.IncomingForm();
-// 	form.parse(req, function(err, fields, files) {
-// 		res.writeHead(200, {'content-type': 'text/plain'});
-// 		res.write('received upload:\n\n');
-// 		res.end(util.inspect({fields: fields, files: files}));
-// 	});
-
-// 	form.on('end', function(fields, files) {
-// 		/* temporary location of our uploaded file */
-// 		var temp_path = this.openedFiles[0].path;
-// 		/* the file name of the uploaded file */
-// 		var file_name = this.openedFiles[0].name;
-// 		 location where we want to copy the uploaded file 
-// 		var new_location = 'uploads/';
-
-// 		fs.copy(temp_path, new_location + file_name, function(err) {
-// 			if (err) {
-// 				console.log(err);
-// 			} else {
-// 				console.log("success!")
-// 			}
-// 		});
-// 	});
-// });
-
-
-// app.get('/image', function (req, res){
-//   res.writeHead(200, {'Content-Type': 'text/html' });
-//   var form = '<form action="/upload" enctype="multipart/form-data" method="post">Add a title: <input name="title" type="text" /><br><br><input multiple="multiple" name="upload" type="file" /><br><br><input type="submit" value="Upload" /></form>';
-//   res.end(form); 
-// }); 
-
+ 
 
 app.post('/item1', function (req, res){
 	var form = new formidable.IncomingForm();
@@ -366,6 +334,7 @@ app.post('/bidder', function (req, res) {
 		address: req.body.address,
 		zipcode: req.body.zipcode,
 		city: req.body.city,
+		country: req.body.country,
 		payment: req.body.payment,
 		shipping: req.body.shipping
 	});
