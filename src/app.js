@@ -111,6 +111,7 @@ app.use(favicon('./src/img/favicon.ico'));
 app.post('/item1', function (req, res){
 	var form = new formidable.IncomingForm();
 	form.parse(req, function(err, fields, files) {
+		console.log(err)
 	});
 		
 	form.on('end', function(fields, files) {
