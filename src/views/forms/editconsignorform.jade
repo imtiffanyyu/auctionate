@@ -1,54 +1,56 @@
 div(id="editconsignorform" style="display:none")
+    p#firstname
+    p#lastname
     form(action='/consignor' method='post' class='col s12 black-text' style="margin:10px")
         .row(class="col s12")
             input-field(class='col s4')
                 label(for="firstname") First Name
-                input(placeholder="First Name" name="firstname" type="text" class="validate")
+                input(name="firstname" type="text" class="validate")
 
             input-field(class='col s8')
                 label(for="lastname") Last Name
-                input(placeholder="Last Name" name="lastname" type="text" class="validate")
+                input(name="lastname" type="text" class="validate")
 
         .row    
             input-field(class='col s12')
                 label(for="address") Address
-                input(placeholder="Address" name="address" type="text" class="validate")
+                input#address(name="address" type="text" class="validate")
 
         .row
             input-field(class='col s2')
                 label(for="zipcode") Zipcode
-                input(placeholder="Zipcode" name="zipcode" type="text" class="validate")
+                input#zipcode(name="zipcode" type="text" class="validate")
 
             input-field(class='col s4')
                 label(for="city") City
-                input(placeholder="City" name="city" type="text" class="validate")
+                input#city(name="city" type="text" class="validate")
 
             input-field(class='col s6')
                 label(for="country") Country
-                input(placeholder="Country" name="country" type="text" class="validate")
+                input#country(name="country" type="text" class="validate")
         .row
             input-field(class='col s4')
                 label(for="phone") Phone
-                input(placeholder="Phone Number" name="phone" type="text" class="validate")
+                input#phone(name="phone" type="text" class="validate")
 
             input-field(class='col s8')
                 label(for="email") Email
-                input(placeholder="Email" name="email" type="text" class="validate")
+                input#email(name="email" type="text" class="validate")
 
 
         .row
             input-field(class='col s6')
                 label(for="bankaccount") Bank Account
-                input(placeholder="Bank Account" name="bankaccount" type="text" class="validate")
+                input#bankaccount(name="bankaccount" type="text" class="validate")
 
             div(class="col s3")
                 label(for="commission") Commission - %
-                input(value="10" id="commission" name="commission" type="text" class="validate")
+                input#commission(value="10" name="commission" type="text" class="validate")
 
 
             div(class="col s3")
                 input-field
                     label(for="fee") Fee - €
-                    input(placeholder="Fee" value="10" name="fee" type="text" class="validate")
+                    input#fee(value="10" name="fee" type="text" class="validate")
         .row
             button(class="btn waves-effect waves-light blue-grey darken-4" type="submit" value="save") Save
