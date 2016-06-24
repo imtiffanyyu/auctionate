@@ -20,9 +20,6 @@ body
 
 		div(class="blue-grey darken-3 col s6" style="height:100vh")
 			.row
-				div(style="margin-top:10px;")
-					button(class="btn waves-effect waves-light blue-grey darken-4" id="additem" style=" float:right") Add Lot
-			.row
 				table(class="highlight white-text" id="items" cellspacing="0" width="100%")
 					thead
 						tr
@@ -40,7 +37,12 @@ body
 
 
 		div(class="blue-grey darken-2 col s6" style="height:100vh")
-
-			include ./forms/lotform.jade
+			.row
+				div(style="margin-top:10px;")
+					button(class="btn waves-effect waves-light blue-grey darken-4" id="additem") Add Lot
+					a(class="btn waves-effect waves-light deep-orange darken-4" id="canceladditem" style="margin-left:10px; display: none") Cancel
 			
-			include ./forms/editlotform.jade
+			.row 
+				include ./forms/lotform.jade
+			
+				include ./forms/editlotform.jade

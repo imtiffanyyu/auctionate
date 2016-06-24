@@ -70,6 +70,16 @@ $(".editconsignor").click(function() {
 		})
 
 
+	$("button#additem").click(function() {
+		$("#editlotform").fadeOut('slow');
+		$("#itemform").fadeIn('slow');
+		$("#canceladditem").fadeIn('slow');
+	})
+
+	$("a#canceladditem").click(function() {
+		$("#itemform").fadeOut('slow');
+		$("#editlotform").fadeOut('slow');
+		$("#canceladditem").fadeOut('slow')
 	})
 
 $("button#addconsignor").click(function() {
@@ -135,15 +145,15 @@ $(".savebtn").on("click", function(e){
 		})
 	});
 
-//<<<<<<< HEAD
+
 $("tr").click(function() {
 	$("#itemform").fadeOut('slow');
 	$("#editlotform").fadeIn('slow');
-	//=======
 	$(".itemclicked").click(function() {
 		$("#itemform").fadeOut('slow');
 		$("#editlotform").fadeIn('slow');
-		//>>>>>>> master
+		$("#canceladditem").fadeIn('slow');
+
 		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 		console.log("You clicked item " + clickeditem)
 
@@ -245,9 +255,9 @@ $('#createlot').on('click', function(event) {
 		}
 	});
 });
-<<<<<<< HEAD
+
 });
-=======
+
 	$('#createlot').on('click', function(event) {
 		event.preventDefault();
 
@@ -312,4 +322,3 @@ $('#createlot').on('click', function(event) {
 	});
 });
 });
-
