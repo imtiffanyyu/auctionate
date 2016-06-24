@@ -12,13 +12,12 @@ $(document).ready(function(){
 	$(".dropdown-button").dropdown({ beloworigin: true });
 	$('.modal-trigger').leanModal();
 
-	// $("#consignors").dataTable( {
-	// 	"lengthChange": false
-	// });
-	// $("#items").dataTable( {
-	// 	"lengthChange": false
-	// });
-//////////////////////////////////////////////////////////////////////
+	$("#consignors").dataTable( {
+		"lengthChange": false
+	});
+	$("#items").dataTable( {
+		"lengthChange": false
+	});
 
 
 	$("button#addconsignor").click(function() {
