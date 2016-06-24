@@ -20,9 +20,6 @@ $(document).ready(function(){
 	// });
 //////////////////////////////////////////////////////////////////////
 
-	$("button#editconsignor").click(function() {
-		$("#editconsignorform").fadeIn('slow');
-	})
 
 	$("button#addconsignor").click(function() {
 		$("#consignorform").fadeIn('slow');

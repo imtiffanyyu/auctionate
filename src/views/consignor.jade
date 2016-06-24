@@ -35,8 +35,8 @@ body
 
 						tbody
 							each consignor in consignors
-								tr
-									td=consignor.id
+								tr(class="editconsignor")
+									td(class="clickedconsignorid")=consignor.id
 									td=consignor.firstname +" "+ consignor.lastname
 									td=consignor.city							
 
