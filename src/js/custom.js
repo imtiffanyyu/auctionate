@@ -221,7 +221,4 @@ $('#createlot').on('click', function(event) {
 });
 
 
-
-
-
 });
