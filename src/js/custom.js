@@ -12,14 +12,14 @@ $(document).ready(function(){
 	$(".dropdown-button").dropdown({ beloworigin: true });
 	$('.modal-trigger').leanModal();
 
-	$("#consignors").dataTable( {
-		"lengthChange": false
-	});
-	$("#items").dataTable( {
-		"lengthChange": false
-	});
+	// $("#consignors").dataTable( {
+	// 	"lengthChange": false
+	// });
+	// $("#items").dataTable( {
+	// 	"lengthChange": false
+	// });
 //////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
+
 $("button#editconsignor").click(function() {
 	$("#editconsignorform").fadeIn('slow');
 })
@@ -40,9 +40,9 @@ $("button#additem").click(function() {
 $("a#canceladditem").click(function() {
 	$("#itemform").fadeOut('slow');
 })
-=======
-	$(".editconsignor").click(function() {
-		$("#editconsignorform").fadeIn('slow');
+
+$(".editconsignor").click(function() {
+	$("#editconsignorform").fadeIn('slow');
 
 		var clickedconsignor = $(".clickedconsignorid", this).text() // looking for clickedconsignorid in the context of this (the thing I clicked)
 		console.log("You clicked consignor " + clickedconsignor)
@@ -72,23 +72,23 @@ $("a#canceladditem").click(function() {
 
 	})
 
-	$("button#addconsignor").click(function() {
-		$("#consignorform").fadeIn('slow');
-	})
+$("button#addconsignor").click(function() {
+	$("#consignorform").fadeIn('slow');
+})
 
-	$("a#canceladdconsignor").click(function() {
-		$("#consignorform").fadeOut('slow');
-	})
+$("a#canceladdconsignor").click(function() {
+	$("#consignorform").fadeOut('slow');
+})
 
-	$("button#additem").click(function() {
-		$("#editlotform").fadeOut('slow');
-		$("#itemform").fadeIn('slow');
-	})
+$("button#additem").click(function() {
+	$("#editlotform").fadeOut('slow');
+	$("#itemform").fadeIn('slow');
+})
 
-	$("a#canceladditem").click(function() {
-		$("#itemform").fadeOut('slow');
-	})
->>>>>>> master
+$("a#canceladditem").click(function() {
+	$("#itemform").fadeOut('slow');
+})
+ //master
 ////////////////////////////////////////////////////////////////
 $(".editlink").on("click", function(e){
 	e.preventDefault();
@@ -135,15 +135,15 @@ $(".savebtn").on("click", function(e){
 		})
 	});
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 $("tr").click(function() {
 	$("#itemform").fadeOut('slow');
 	$("#editlotform").fadeIn('slow');
-=======
+	//=======
 	$(".itemclicked").click(function() {
 		$("#itemform").fadeOut('slow');
 		$("#editlotform").fadeIn('slow');
->>>>>>> master
+		//>>>>>>> master
 		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 		console.log("You clicked item " + clickeditem)
 
@@ -168,27 +168,26 @@ $("tr").click(function() {
 
 	})
 
-$(".deleteitem").click(function() {
-	var deleteitemid = $("#displayitemid").text();
-	console.log(deleteitemid);
+	$(".deleteitem").click(function() {
+		var deleteitemid = $("#displayitemid").text();
+		console.log(deleteitemid);
 
-	$.ajax({
-		method: "DELETE",
-		url: "/item",
-		data: {
-			deleteitemid: deleteitemid
-		}
+		$.ajax({
+			method: "DELETE",
+			url: "/item",
+			data: {
+				deleteitemid: deleteitemid
+			}
+		})
 	})
-})
-
-$('#createlot').on('click', function(event) {
-	event.preventDefault();
+});
+	$('#createlot').on('click', function(event) {
+		event.preventDefault();
 
 	// New lot
 	$.post(
 		'/item',{
 			consignorId: $('[name="consignorId"]').val(),
-			bidderId: $('[name="bidderId"]').val(),
 			lotnumber: $('[name="lotnumber"]').val(),
 			name: $('[name="name"]').val(),
 			category: $('[name="category"]').val(),
@@ -219,9 +218,30 @@ $('#createlot').on('click', function(event) {
 	// End file upload
 
 });
+	$('#createbidder').on('click', function(event) {
+		event.preventDefault();
 
-
-
-
-
+	$.post(
+		'/bidder',{
+			firstname: $('[name="firstname"]').val(),
+			lastname: $('[name="lastname"]').val(),
+			phone: $('[name="phone"]').val(),
+			email: $('[name="email"]').val(),
+			address: $('[name="address"]').val(),
+			zipcode: $('[name="zipcode"]').val(),
+			city: $('[name="country"]').val(),
+			payment: $('[name="consignorId"]').val()
+		}, function(result){ console.log(result) }
+		)
+	$.ajax({
+		url: '/bidder',
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		type: 'POST',
+		success: function(data){
+		}
+	});
+});
 });
