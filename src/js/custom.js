@@ -19,6 +19,7 @@ $(document).ready(function(){
 		"lengthChange": false
 	});
 //////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 $("button#editconsignor").click(function() {
 	$("#editconsignorform").fadeIn('slow');
 })
@@ -39,6 +40,55 @@ $("button#additem").click(function() {
 $("a#canceladditem").click(function() {
 	$("#itemform").fadeOut('slow');
 })
+=======
+	$(".editconsignor").click(function() {
+		$("#editconsignorform").fadeIn('slow');
+
+		var clickedconsignor = $(".clickedconsignorid", this).text() // looking for clickedconsignorid in the context of this (the thing I clicked)
+		console.log("You clicked consignor " + clickedconsignor)
+
+		$.ajax({
+			method: "GET",
+			url: "/consignorjson",
+			data: {
+				clickedconsignor: clickedconsignor
+			}
+		}).done(function(consignor){
+			console.log(consignor)
+			//$('#displayconsignorid').text (consignor.id)
+			$('#firstname').text (consignor.firstname)
+			$('#lastname').text (consignor.lastname)
+			$('#address').text (consignor.address)
+			$('#zipcode').text (consignor.zipcode)
+			$('#city').text (consignor.city)
+			$('#country').text (consignor.country)
+			$('#phone').text (consignor.phone)
+			$('#email').text (consignor.email)
+			$('#bankaccount').text (consignor.bankaccount)
+			$('#commission').text (consignor.commission)
+			$('#fee').text (consignor.fee)
+		})
+
+
+	})
+
+	$("button#addconsignor").click(function() {
+		$("#consignorform").fadeIn('slow');
+	})
+
+	$("a#canceladdconsignor").click(function() {
+		$("#consignorform").fadeOut('slow');
+	})
+
+	$("button#additem").click(function() {
+		$("#editlotform").fadeOut('slow');
+		$("#itemform").fadeIn('slow');
+	})
+
+	$("a#canceladditem").click(function() {
+		$("#itemform").fadeOut('slow');
+	})
+>>>>>>> master
 ////////////////////////////////////////////////////////////////
 $(".editlink").on("click", function(e){
 	e.preventDefault();
@@ -65,7 +115,7 @@ $(".savebtn").on("click", function(e){
 		var dataset = elink.prev(".datainfo"); // looks for "datainfo" before editlink
 		var newid   = dataset.attr("id"); // grabs id for form creaton
 		var cinput  = "#"+newid+"-form"; // creates form for the id
-
+		var einput  = $(cinput);
 		var newval  = einput.val();
 		console.log('form value is: ' + newval)
 		$(this).css("display", "none");
@@ -85,9 +135,15 @@ $(".savebtn").on("click", function(e){
 		})
 	});
 
+<<<<<<< HEAD
 $("tr").click(function() {
 	$("#itemform").fadeOut('slow');
 	$("#editlotform").fadeIn('slow');
+=======
+	$(".itemclicked").click(function() {
+		$("#itemform").fadeOut('slow');
+		$("#editlotform").fadeIn('slow');
+>>>>>>> master
 		var clickeditem = $(".itemid", this).text() // looking for itemid in the context of this (the thing I clicked)
 		console.log("You clicked item " + clickeditem)
 

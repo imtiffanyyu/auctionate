@@ -32,7 +32,7 @@ body
 							th Description
 					tbody
 						each item in items
-							tr
+							tr(class="itemclicked")
 								td(class="itemid")=item.itemid
 								td=item.lotnumber
 								td=item.name

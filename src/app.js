@@ -67,6 +67,7 @@ Bidder.hasMany(Item);
 Item.belongsTo(Bidder);
 
 var app = express();
+app.locals.moment = require('moment');
 
 app.use(qt.static(__dirname + './src/'));
 app.use(express.static('./src/'));
@@ -157,39 +158,31 @@ app.get('/invoiceconsignor', function (req, res) {
 		include: [Item]
 	}).then (function (details) {
 		var data = details
-
-		console.log(details.commission)
-		console.log(details.fee)
 		
-		// var data = details.map(function (detail) {
-		// 	return {
-		// 		id: detail.item.id,
-		// 		name: detail.item.name,
-		// 		reserve: detail.item.reserve,
-		// 		firstname: detail.firstname,
-		// 		lastname: detail.lastname,
-		// 		address: detail.address,
-		// 		zipcode: detail.zipcode,
-		// 		city: detail.city,
-		// 		country: detail.country,
-		// 		phone: detail.phone,
-		// 		email: detail.email,
-		// 		bankaccount: detail.bankaccount,
-		// 		commission: detail.commission,
-		// 		fee: detail.consignorfee
-		// 	};
-		// })
-	res.render('invoiceconsignor', {
-		consignorId: req.query.consignor,
-		data: data
+		res.render('invoiceconsignor', {
+			consignorId: req.query.consignor,
+			data: data
 	});
 	})
 
 });
 
-// Invoice view for consignors
+// Invoice view for bidders
 app.get('/invoicebidder', function (req, res) {
-	res.render('invoicebidder');
+	console.log(req.query.bidder);
+	Bidder.findOne({
+		where: {id: req.query.bidder},
+		include: [Item]
+	}).then (function (details) {
+		var data = details;
+
+		res.render('invoicebidder', {
+			bidderId: req.query.bidder,
+			data: data
+		});
+
+	})
+	
 });
 
 // gets all the items in the database
@@ -213,12 +206,12 @@ app.get('/item', function (req, res) {
 		});
 		res.render('item', {
 			items: items
-			// itemtoview: data
 		});
 
 	});
 });
 
+//create item in the database
 app.post('/item', function (req, res) {
 	Item.create({
 		lotnumber: req.body.lotnumber,
@@ -239,6 +232,7 @@ app.get('/itemjson', function (req, res) {
 	})
 })
 
+// delete item in the database
 app.delete('/item', function (req, res) {
 	Item.destroy({
 		where:
@@ -289,6 +283,12 @@ app.get('/consignor', function (req, res) {
 	});
 });
 
+app.get('/consignorjson', function (req, res) {
+	Consignor.findById(req.query.clickedconsignor).then(function (clickedconsignors) {
+		res.send(clickedconsignors);
+	})
+})
+
 // add new consignor
 app.post('/consignor', function (req, res) {
 	Consignor.create({
@@ -308,6 +308,30 @@ app.post('/consignor', function (req, res) {
 	})
 });
 
+// delete consignor from the database
+// app.delete('/item', function (req, res) {
+// 	Item.destroy({
+// 		where:
+// 		{
+// 			id: req.body.deleteitemid
+// 		}},
+// 		function (err, res) {
+// 			if (err) return res.send(500, err)
+// 				res.send('Item deleted')
+// 		})
+// })
+
+// update consignor in the database
+// app.put('/item', function (req, res) {
+// 	Item.findById(req.body.displayitemid).then(function (item) {
+// 		var object = {};
+// 		object[req.body.newid] = req.body.newValue;
+// 		console.log(object);
+// 		item.updateAttributes(object).then(function () {
+// 		res.send({status: 'update worked'})
+// 		})
+// 	})
+// })
 
 // get all bidders out of the database
 app.get('/bidder', function (req, res) {
